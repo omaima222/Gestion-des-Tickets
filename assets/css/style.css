@@ -1,4 +1,229 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root{
+    --color-primary: #fff;
+    --color-secondary: #000;
+    --dark-blue: #0022BA;
+    --normal-blue: #231FEA;
+    --default: #8A1538;
+    --light-blue: #7F7DF3;
+    --lightest-blue: #DADAFB;
+}
+
 body{
     font-family: 'Poppins', sans-serif;
+    background-color: var(--color-primary);
 }
+
+/* style the navbar */
+header .navbar .navbar-brand {
+    font-size: 1.1rem;
+    color: var(--default);
+    font-weight: bold;
+
+}
+
+header .navbar form  .btn-login{
+    color: var(--default);
+    background-color: var(--color-primary);
+    font-weight: normal;
+    border: 1px solid var(--default);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+header .navbar form  .btn-login:hover,
+header .navbar form  .btn-login:focus{
+    color: var(--color-primary);
+    background-color: var(--default);
+}
+
+header .navbar form  .btn-signup{
+    color: var(--color-primary);
+    background-color: var(--default);
+    font-weight: normal;
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+header .navbar form  .btn-signup:hover,
+header .navbar form  .btn-signup:focus{
+    color: var(--default);
+    background-color: var(--color-primary);
+    border: 1px solid var(--default);
+}
+
+header .navbar .navbar-nav .nav-item a{
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    padding:  .5rem 1rem;
+    font-weight:700;
+}
+
+header .navbar .navbar-nav .nav-item a:hover,
+header .navbar .navbar-nav .nav-item a:focus,
+header .navbar .navbar-nav .nav-item a:active{
+    background-color: var(--default);
+    color: var(--color-primary) !important;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+
+/* style the header */
+header{
+    min-height: 400px;
+    width: 100%;
+    background-image:
+    linear-gradient(to bottom, rgba(255, 166, 158, 0.5), rgba(134, 22, 87, 0.5)),
+    /* linear-gradient(to bottom, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.26)), */
+
+    url("../images/image\ 4.jpg"); 
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 7rem;
+   
+}
+
+header .header-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    
+}
+
+header .header-title p{
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 7rem;
+    color: var(--color-primary);
+    text-shadow: 4px 4px var(--color-secondary);
+    
+
+}
+
+header form.search-form{
+    position: absolute;
+    left: 15%;
+    top: 97%;
+    background-color: var(--color-primary);
+    padding: .5rem 1rem;
+    border: 2px solid var(--color-secondary);
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header form.search-form input{
+    border: none;
+}
+
+header form.search-form .btn-search{
+    color: var(--color-primary);
+    background-color: var(--default);
+    border: 1px solid var(--color-primary);
+    font-weight: normal;
+    position: absolute;
+    left: 90%;
+}
+
+/* style upcoming match section ==>> Carousel */
+.upcoming-match{
+    margin-bottom: 1rem;
+}
+.upcoming-match .upcoming-title p,
+.browse-teams .teams-title p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.upcoming-match .carousel-inner .carousel-item p,
+.browse-teams .carousel-inner .carousel-item p{
+    font-size: .8rem;
+}
+
+.upcoming-match .view-all a,
+.browse-teams .view-all a{
+    text-decoration: none;
+    color: var(--default);
+
+}
+
+
+main .carousel-control-next i{
+    color: var(--default);
+    position: absolute;
+    top: 49%;
+    left: 81%;
+    z-index: 1111;
+}
+
+.carousel-indicators{
+    margin-bottom: -2rem;
+}
+
+.indicators{
+    background-color: var(--color-secondary) !important;
+}
+
+.browse-teams{
+    margin-bottom: 4rem;
+}
+
+/* style the footer */
+footer{
+    padding: 3rem 0 0;
+    background-color: var(--default);
+}
+
+footer .fifa{
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+footer  ul{
+    list-style: none;
+}
+
+footer  ul li{
+    margin-bottom: .7rem;
+}
+
+footer ul li.links-title a{
+    font-size: 1rem;
+}
+
+footer  ul li a{
+    text-decoration: none;
+    color: var(--color-primary);
+    text-transform: capitalize;
+    font-size: .7rem;
+}
+
+footer .social-links{
+    margin: 3rem 0 0;
+    border-top: 1px solid var(--color-primary);
+    padding: 2rem;
+    padding-bottom: 0;
+    color: var(--color-primary);
+}
+
+footer .social-links ul li{
+    margin: 0 1rem;
+}
+
