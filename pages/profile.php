@@ -3,12 +3,13 @@ include('../components/head.php');
 include('../components/footer.php');
 ?>
 
-<body class="d-flex justify-content-center align-items-center">
+<body class="userBody d-flex justify-content-center align-items-center">
     
     <section style=" box-shadow: 0px 5px 10px black;" class="d-flex px-5 rounded-3 bg-white">
-     <section  class="text-center me-5">
+     <section  class=" text-center me-5">
         <h1 class="my-2">My Profile</h1>
         <img style="width:10rem; height:10rem;" class="rounded-circle" src="../assets/images/user.png" alt="user profile picture">
+        <a class="userLinks d-block " href="reservation.php">Reservation History</a>
      </section>
      <section>
             <form action="" class="my-3" data-parsley-validate>

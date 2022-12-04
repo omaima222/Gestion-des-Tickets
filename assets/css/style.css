@@ -227,6 +227,16 @@ footer .social-links ul li{
     margin: 0 1rem;
 }
 
+
+.userBody{
+    background-color: var(--default) ;
+}
+
 .buttonAcc{
-    background-color: #8A1538!important ;
+    background-color: var(--default)!important ;
+}
+
+.userLinks{
+    text-decoration: none;
+    color:var(--default) ;
 }
