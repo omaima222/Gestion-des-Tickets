@@ -2,37 +2,123 @@
 
 namespace App\classes;
 
-class Stadiums extends Connection{
+use PDO;
+use PDOException;
+
+class Teams extends Connection{
+
+
+    //Les propriétés ----------------
     private $id;
     private $name;
     private $capacity;
     private $address;
     private $image;
+    
 
-    function __construct($id,$name,$capacity,$address,$image){
-        $this-> id          = $id;
-        $this-> name        = $name;
-        $this-> capacity    = $capacity;
-        $this-> address     = $address;
-        $this-> image       = $image;
+    //Les setters ----------------
+    public function setId($id): void{
+        $this->id = $id;
+    }
+    
+    public function setName($name): void{
+        $this->name = $name;
     }
 
-    function read() :  void{
-        $this-> connect();
+    public function setCapacity($capacity): void{
+        $this->capacity = $capacity;
     }
 
-    function add($name,$capacity,$address,$image): void{
-        // TODO: Implement add() method.
+    public function setAddress($address): void{
+        $this->address = $address;
     }
 
-    function update($id,$name,$capacity,$address,$image): void{
-        // TODO: Implement update() method.
+    public function setImage($image): void{
+        $this->image = $image;
     }
 
-    function delete($id): void{
-        // TODO: Implement delete() method.
+
+    //Méthode d'affichage ----------------
+    function read() : bool|array{
+        try{
+            $sql = "SELECT * FROM stadium";
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        }catch (PDOException $e){
+            echo    $e->getMessage();
+            return false;
+        }
     }
 
+
+    //Méthode de spécification ----------------
+    function getSpecific(): bool|array{
+        try{
+            $sql = "SELECT * FROM stadium WHERE id = :id";
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        }catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
+    //Méthode d'ajout ----------------
+    function add(): bool{
+        try{
+            $sql = "INSERT INTO stadium VALUES (NULL, :name, :capacity, :address, :image)";
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
+            $stmt->bindParam(':capacity', $this->capacity, PDO::PARAM_STR);
+            $stmt->bindParam(':address', $this->address, PDO::PARAM_STR);
+            $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            // Close statement
+            unset($stmt);
+
+            return true;
+
+        }catch (PDOException $e) {
+            echo    $e->getMessage();
+            return false;
+        }
+    }
+
+
+    //Méthode de suppression ----------------
+    function delete(): bool{
+        try{
+            $sql = "DELETE FROM stadium WHERE id = :id";
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            // Close statement
+            unset($stmt);
+
+            return true;
+            
+        }catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 }
 
 ?>
