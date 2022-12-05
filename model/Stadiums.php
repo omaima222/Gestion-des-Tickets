@@ -5,7 +5,7 @@ namespace App\classes;
 use PDO;
 use PDOException;
 
-class Teams extends Connection{
+class Stadiums extends Connection{
 
 
     //Les propriétés ----------------
@@ -50,25 +50,6 @@ class Teams extends Connection{
 
         }catch (PDOException $e){
             echo    $e->getMessage();
-            return false;
-        }
-    }
-
-
-    //Méthode de spécification ----------------
-    function getSpecific(): bool|array{
-        try{
-            $sql = "SELECT * FROM stadium WHERE id = :id";
-            $stmt = $this->connect()->prepare($sql);
-
-            $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
-
-            $stmt->execute();
-
-            return $stmt->fetchAll();
-
-        }catch (PDOException $e) {
-            echo $e->getMessage();
             return false;
         }
     }

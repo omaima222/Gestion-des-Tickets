@@ -55,25 +55,6 @@ class Teams extends Connection{
     }
 
 
-    //Méthode de spécification ----------------
-    function getSpecific(): bool|array{
-        try{
-            $sql = "SELECT * FROM team WHERE id = :id";
-            $stmt = $this->connect()->prepare($sql);
-
-            $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
-
-            $stmt->execute();
-
-            return $stmt->fetchAll();
-
-        }catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    }
-
-
     //Méthode d'ajout ----------------
     function add(): bool{
         try{
