@@ -5,6 +5,6 @@ include_once '../model/Teams.php';
 
 use App\Classes\Teams;
 
-$team = new Teams("", "", "", "");
+$team = new Teams("", "", "", "","");
 
 $team->read();

@@ -2,6 +2,9 @@
 
 namespace App\classes;
 
+use PDO;
+use PDOException;
+
 class Teams extends Connection{
     private $id;
     private $name;
@@ -21,18 +24,28 @@ class Teams extends Connection{
         $this-> connect();
     }
 
-    function add($name,$logo,$image,$groupe): void{
-        // TODO: Implement add() method.
-    }
+    function add(): bool
+    {
+        try {
+            $sql = "INSERT INTO team VALUES (NULL, :name, :logo, :image, :groupe)";
+            $stmt = $this->connect()->prepare($sql);
 
-    function update($id,$name,$logo,$image,$groupe): void{
-        // TODO: Implement update() method.
-    }
+            $stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
+            $stmt->bindParam(':logo', $this->logo);
+            $stmt->bindParam(':image', $this->image);
+            $stmt->bindParam(':groupe', $this->groupe, PDO::PARAM_INT);
 
-    function delete($id): void{
-        // TODO: Implement delete() method.
-    }
+            $stmt->execute();
 
+            // Close statement
+            unset($stmt);
+
+            return true;
+        } catch (PDOException $e) {
+            echo "ERROR: Could not prepare/execute query: $sql. " . $e->getMessage();
+            return false;
+        }
+    }
 }
 
 ?>

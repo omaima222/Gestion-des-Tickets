@@ -5,6 +5,6 @@ include_once '../model/Stadiums.php';
 
 use App\Classes\Stadiums;
 
-$stadium = new Stadiums("", "", "", "");
+$stadium = new Stadiums("", "", "", "","");
 
 $stadium->read();
