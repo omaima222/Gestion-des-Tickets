@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require 'shared.php';
 require '../model/Connection.php';
@@ -85,7 +84,7 @@ function delete_match($id): void
     } else {
         $_SESSION['message'] = "Error when delete Match !";
     }
-    header('location: ../view/home.php');
+    header('location: ../pages/dashboard.php');
 }
 
 function get_specific_match($id): void
