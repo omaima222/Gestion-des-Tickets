@@ -12,8 +12,8 @@ if (isset($_POST['delete_team'])) delete_stadium($_POST['delete_team']);
 function save_team(): void
 {
     $name = validate_input("{$_POST['team-name']}", 'text');
-    $logo = validate_input("{$_POST["team-logo"]}", 'select');
-    $image = validate_input("{$_POST["team-image"]}", 'text');
+    $logo = validate_input("{$_POST["team-logo"]}", 'pass');
+    $image = validate_input("{$_POST["team-image"]}", 'pass');
     $groupe = validate_input("{$_POST["team-groupe"]}", 'selectAlphabet');
 
     if ($name == 'null' || $logo == 'null' || $image == 'null' || $groupe == 'null') {
