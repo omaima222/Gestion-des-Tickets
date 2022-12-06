@@ -230,6 +230,9 @@ footer .social-links ul li{
 
 .userBody{
     background-color: var(--default) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .buttonAcc{
