@@ -1,4 +1,7 @@
 <?php
+
+include_once '../controller/Matche_controller.php';
+
 include('../components/head.php');
 
 // include('../components/navBar.php');
@@ -51,216 +54,34 @@ include('../components/head.php');
                     </div>
                 </div>
 
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-3">
-                                                    NOV <br>
-                                                    23
+                <div class="owl-carousel owl-theme">
+                    <?php
+                    foreach (get_matchs() as $match) {
+                        echo "
+                                <div class='item'>
+                                    <div class='card'>
+                                        <img class='img-fluid' alt='100%x280' src='../assets/images/Rectangle 2.jpg'>
+                                        <div class='card-body'>
+                                            <div class='row align-items-center'>
+                                                <div class='col-3'>
+                                                    " . separate_date($match['date'])[1] . "<br>" . separate_date($match['date'])[0] . "
                                                 </div>
-                                                <div class="col-9">
-                                                    <p class="card-title">Morocco Vs Croitia</p>
-                                                    <p class="card-text">$ 150</p>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-location-dot"></i>
+                                                <div class='col-9'>
+                                                    <p class='card-title'>Morocco Vs Croitia</p>
+                                                    <p class='card-text'>$match[ticket_price]</p>
+                                                    <p class='card-text'>
+                                                        <i class='fa-solid fa-location-dot'></i>
                                                         Al Bayt Stadium
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-3">
-                                                    NOV <br>
-                                                    23
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="card-title">Morocco Vs Croitia</p>
-                                                    <p class="card-text">$ 150</p>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-location-dot"></i>
-                                                        Al Bayt Stadium
-                                                    </p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-3">
-                                                    NOV <br>
-                                                    23
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="card-title">Morocco Vs Croitia</p>
-                                                    <p class="card-text">$ 150</p>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-location-dot"></i>
-                                                        Al Bayt Stadium
-                                                    </p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-3">
-                                                    NOV <br>
-                                                    23
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="card-title">Morocco Vs Croitia</p>
-                                                    <p class="card-text">$ 150</p>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-location-dot"></i>
-                                                        Al Bayt Stadium
-                                                    </p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-3">
-                                                    NOV <br>
-                                                    23
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="card-title">Morocco Vs Croitia</p>
-                                                    <p class="card-text">$ 150</p>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-location-dot"></i>
-                                                        Al Bayt Stadium
-                                                    </p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-3">
-                                                    NOV <br>
-                                                    23
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="card-title">Morocco Vs Croitia</p>
-                                                    <p class="card-text">$ 150</p>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-location-dot"></i>
-                                                        Al Bayt Stadium
-                                                    </p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-3">
-                                                    NOV <br>
-                                                    23
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="card-title">Morocco Vs Croitia</p>
-                                                    <p class="card-text">$ 150</p>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-location-dot"></i>
-                                                        Al Bayt Stadium
-                                                    </p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-3">
-                                                    NOV <br>
-                                                    23
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="card-title">Morocco Vs Croitia</p>
-                                                    <p class="card-text">$ 150</p>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-location-dot"></i>
-                                                        Al Bayt Stadium
-                                                    </p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <a class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls"
-                           data-bs-slide="next">
-                            <i class="fa-solid fa-circle-chevron-right fa-2x"></i>
-                        </a>
-                    </div>
-
+                                </div>";
+                    }
+                    ?>
                 </div>
+
         </section>
 
         <section class="teams-group mb-4">

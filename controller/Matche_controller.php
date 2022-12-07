@@ -12,6 +12,12 @@ if (isset($_POST['update_match'])) update_match();
 if (isset($_POST['delete_match'])) delete_match($_POST['delete_match']);
 if (isset($_POST['specific_match'])) get_specific_match($_POST['specific_match']);
 
+function get_matchs(): bool|array
+{
+    $match = new Matche();
+    return $match->read();
+}
+
 function save_match(): void
 {
     $first_team_id = validate_input("{$_POST['match-first-team']}", 'select');
