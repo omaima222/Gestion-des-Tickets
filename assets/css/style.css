@@ -8,6 +8,7 @@
     --default: #8A1538;
     --light-blue: #7F7DF3;
     --lightest-blue: #DADAFB;
+    --color-grey : #828282;
 }
 
 body{
@@ -16,14 +17,14 @@ body{
 }
 
 /* style the navbar */
- .navbar .navbar-brand {
+.navbar .navbar-brand {
     font-size: 1.1rem;
     color: var(--default);
     font-weight: bold;
 
 }
 
- .navbar form  .btn-login{
+.navbar form  .btn-login{
     color: var(--default);
     background-color: var(--color-primary);
     font-weight: normal;
@@ -35,13 +36,13 @@ body{
     -o-transition: all .3s ease-out;
 }
 
- .navbar form  .btn-login:hover,
- .navbar form  .btn-login:focus{
-    color: var(--color-primary);
-    background-color: var(--default);
+.navbar form  .btn-login:hover,
+.navbar form  .btn-login:focus{
+    color: var(--color-primary) !important;
+    background-color: var(--default) !important;
 }
 
- .navbar form  .btn-signup{
+.navbar form  .btn-signup{
     color: var(--color-primary);
     background-color: var(--default);
     font-weight: normal;
@@ -52,14 +53,33 @@ body{
     -o-transition: all .3s ease-out;
 }
 
- .navbar form  .btn-signup:hover,
- .navbar form  .btn-signup:focus{
+.navbar form  .btn-signup:hover,
+.navbar form  .btn-signup:focus{
     color: var(--default);
-    background-color: var(--color-primary);
-    border: 1px solid var(--default);
+    background-color: var(--color-primary) !important;
+    border: 1px solid var(--default) !important;
 }
 
- .navbar .navbar-nav .nav-item a{
+/* style all navbar button (sign in & sign up) */
+a.btn-navbar__signup{
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a.btn-navbar__signup:hover{
+    color: var(--default);
+}
+
+a.btn-navbar__login{
+    color: var(--default);
+    text-decoration: none;
+}
+
+a.btn-navbar__login:hover{
+    color: var(--color-primary);
+}
+
+.navbar .navbar-nav .nav-item a{
     transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
     -moz-transition: all .3s ease-out;
@@ -69,9 +89,9 @@ body{
     font-weight:700;
 }
 
- .navbar .navbar-nav .nav-item a:hover,
- .navbar .navbar-nav .nav-item a:focus,
- .navbar .navbar-nav .nav-item a:active{
+.navbar .navbar-nav .nav-item a:hover,
+.navbar .navbar-nav .nav-item a:focus,
+.navbar .navbar-nav .nav-item a:active{
     background-color: var(--default);
     color: var(--color-primary) !important;
     border-radius: .5rem;
@@ -87,8 +107,6 @@ header{
     width: 100%;
     background-image:
     linear-gradient(to bottom, rgba(255, 166, 158, 0.5), rgba(134, 22, 87, 0.5)),
-    /* linear-gradient(to bottom, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.26)), */
-
     url("../images/image\ 4.jpg"); 
     position: relative;
     background-position: center;
@@ -279,4 +297,94 @@ footer .social-links ul li{
     background-color: var(--color-primary);
     border-radius: 0.5rem;
 
+}
+
+
+/* style button of all clicked cards */
+a.card-btn{
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+/* style reservation page */
+main .information-match{
+    margin-bottom: 2rem;
+    margin-top: 5rem;
+}
+main .information-match .match-info .match-img{
+    background-color: var(--lightest-blue);
+    /* border: 1px solid red; */
+    justify-content: center;
+    display: flex;
+    
+}
+
+main .information-match .share ul {
+    margin-top: 1.5rem;
+}
+
+main .information-match .share ul li{
+    text-decoration: none;
+    color: var(--default);
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid var(--default);
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .7rem;
+    border-radius: .3rem;
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    -ms-border-radius: .3rem;
+    -o-border-radius: .3rem;
+}
+
+main .information-match .share ul li a{
+    color: var(--default);
+}
+
+main .information-match .match-info .description .title{
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+main .information-match .match-info .ticket{
+    border: 1px solid var(--color-grey);
+    border-radius: .3rem;
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    -ms-border-radius: .3rem;
+    -o-border-radius: .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: .7rem 1.5rem;
+    transition: all .2s ease-in-out;
+}
+
+main .information-match .match-info .ticket  button{
+    background-color: var(--default);
+    color: var(--color-primary);
+    border-radius: .2rem;
+    -webkit-border-radius: .2rem;
+    -moz-border-radius: .2rem;
+    -ms-border-radius: .2rem;
+    -o-border-radius: .2rem;
+    font-size: .5rem;
+    margin:  .5rem auto;
+}
+
+/* HOVER ALL CARDS*/ 
+main .information-match .match-info .ticket:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
 }
