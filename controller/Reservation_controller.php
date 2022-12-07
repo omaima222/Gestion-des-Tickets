@@ -47,3 +47,4 @@ function delete_reservation($id): void
     }
     header('location: ../view/home.php');
 }
+

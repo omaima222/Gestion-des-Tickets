@@ -16,14 +16,14 @@ body{
 }
 
 /* style the navbar */
-header .navbar .navbar-brand {
+ .navbar .navbar-brand {
     font-size: 1.1rem;
     color: var(--default);
     font-weight: bold;
 
 }
 
-header .navbar form  .btn-login{
+ .navbar form  .btn-login{
     color: var(--default);
     background-color: var(--color-primary);
     font-weight: normal;
@@ -35,13 +35,13 @@ header .navbar form  .btn-login{
     -o-transition: all .3s ease-out;
 }
 
-header .navbar form  .btn-login:hover,
-header .navbar form  .btn-login:focus{
+ .navbar form  .btn-login:hover,
+ .navbar form  .btn-login:focus{
     color: var(--color-primary);
     background-color: var(--default);
 }
 
-header .navbar form  .btn-signup{
+ .navbar form  .btn-signup{
     color: var(--color-primary);
     background-color: var(--default);
     font-weight: normal;
@@ -52,14 +52,14 @@ header .navbar form  .btn-signup{
     -o-transition: all .3s ease-out;
 }
 
-header .navbar form  .btn-signup:hover,
-header .navbar form  .btn-signup:focus{
+ .navbar form  .btn-signup:hover,
+ .navbar form  .btn-signup:focus{
     color: var(--default);
     background-color: var(--color-primary);
     border: 1px solid var(--default);
 }
 
-header .navbar .navbar-nav .nav-item a{
+ .navbar .navbar-nav .nav-item a{
     transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
     -moz-transition: all .3s ease-out;
@@ -69,9 +69,9 @@ header .navbar .navbar-nav .nav-item a{
     font-weight:700;
 }
 
-header .navbar .navbar-nav .nav-item a:hover,
-header .navbar .navbar-nav .nav-item a:focus,
-header .navbar .navbar-nav .nav-item a:active{
+ .navbar .navbar-nav .nav-item a:hover,
+ .navbar .navbar-nav .nav-item a:focus,
+ .navbar .navbar-nav .nav-item a:active{
     background-color: var(--default);
     color: var(--color-primary) !important;
     border-radius: .5rem;
@@ -237,9 +237,46 @@ footer .social-links ul li{
 
 .buttonAcc{
     background-color: var(--default)!important ;
+    color: white;
+    width: 100%;
+    border: 1px solid var(--default)!important;
+    border-radius: 0.2rem;
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.buttonAcc:hover{
+    color: var(--default)!important;
+    background-color: var(--color-primary)!important;
 }
 
 .userLinks{
     text-decoration: none;
     color:var(--default) ;
+}
+
+.buttonDownload{
+    background-color: var(--default) ;
+    color: white;
+    border: 1px solid var(--default);
+    border-radius: 1rem;
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+.buttonDownload:hover{
+    color: var(--default)!important;
+    background-color: var(--color-primary);
+}
+
+.reservTable{
+    padding: 1rem!important;
+    background-color: var(--color-primary);
+    border-radius: 0.5rem;
+
 }
