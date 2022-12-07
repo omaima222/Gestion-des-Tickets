@@ -1,22 +1,20 @@
 <?php 
 include('../components/head.php');
-include('../components/footer.php');
+include('../components/navBar.php');
+
 ?>
 
-<body class="userBody d-flex justify-content-center align-items-center">
+<body class="userBody d-flex justify-content-around align-items-center">
     
-    <section style=" box-shadow: 0px 5px 10px black;" class="d-flex px-5 rounded-3 bg-white">
-             <?php
-               require '../controller/User_controller.php';
-             
-
+    
+    <section style=" box-shadow: 0px 5px 10px black; margin-top: 5rem;" class="d-flex px-5 rounded-3 bg-white">
+            <?php
                $user=Display();
-
-             ?>
-        <section  class=" text-center me-5">
+            ?>
+        <section  class="text-center me-5">
           <h1 class="my-2">My Profile</h1>
           <img style="width:10rem; height:10rem;" class="rounded-circle" src="../assets/images/users pfp/<?php echo $user['image'];?>" alt="user profile picture">
-          <a class="userLinks d-block " href="reservation.php">Reservation History</a>
+          <button  class="buttonAcc my-4 btn btn-primary"><a class="text-decoration-none text-white" href="reservation.php">Reservations</a></button>
         </section>
         <section>
            
@@ -45,12 +43,16 @@ include('../components/footer.php');
                     <label class="form-label" for="pfp">Profile picture</label>
                     <input class="form-control" type="file" name="pfp" accept=" .jpg, .png, .jpeg"  >
 		        </div>  
-                <button style="width: 100%;" type="submit" name="update" class="buttonAcc my-4 btn btn-primary border-0" > U P D A T E </button>
+                <button type="submit" name="update" class="buttonAcc my-4 btn btn-primary" > U P D A T E </button>
                 
  
             </form>
-     </section>
+       </section>
     </section>
 
 
 </body>
+
+<?php
+include('../components/footer.php');
+?>

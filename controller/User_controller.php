@@ -12,18 +12,18 @@ if(isset($_POST["login"]))  Login();
 if(isset($_POST["update"]))  Update();
 if(isset($_GET["updateId"]))  Display();
 if(isset($_GET["deleteAcc"]))  Delete();
+if(isset($_GET["logout"]))  Logout();
 
 
 
 
-function Signup() {
+
+function Signup(){
     $user = new User();
     $user->signup();
-    header("Location:../pages/login.php");
 } 
 
-function Login() {
-
+function Login(){
     $user = new User();
     
     $result = $user->login();
@@ -38,9 +38,19 @@ function Login() {
     }
 } 
 
-function Update() {
+function Logout(){
+
+    $user = new User();
+    if(isset($_SESSION['userId'])){
+       $user->logout();
+       var_dump($user);
+    }
+}
+
+function Update(){
     $user = new User();
     $user->update();
+
 } 
 
 function Display(){
@@ -50,7 +60,7 @@ function Display(){
 
 function Delete(){
     $user = new User();
-    $user->delete();
+    $user->delete($_SESSION['userId']);
 }
 
 
