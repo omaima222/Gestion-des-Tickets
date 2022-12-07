@@ -3,33 +3,51 @@ include('../components/head.php');
 include('../components/footer.php');
 ?>
 
-<body class="d-flex justify-content-center align-items-center">
+<body class="userBody d-flex justify-content-center align-items-center">
     
     <section style=" box-shadow: 0px 5px 10px black;" class="d-flex px-5 rounded-3 bg-white">
-     <section  class="text-center me-5">
-        <h1 class="my-2">My Profile</h1>
-        <img style="width:10rem; height:10rem;" class="rounded-circle" src="../assets/images/user.png" alt="user profile picture">
-     </section>
-     <section>
-            <form action="" class="my-3" data-parsley-validate>
-            <div class="my-3">
+             <?php
+               require '../controller/User_controller.php';
+             
+
+               $user=Display();
+
+             ?>
+        <section  class=" text-center me-5">
+          <h1 class="my-2">My Profile</h1>
+          <img style="width:10rem; height:10rem;" class="rounded-circle" src="../assets/images/users pfp/<?php echo $user['image'];?>" alt="user profile picture">
+          <a class="userLinks d-block " href="reservation.php">Reservation History</a>
+        </section>
+        <section>
+           
+            <form action="../controller/User_controller.php" class="my-3" method="POST" enctype="multipart/form-data"  data-parsley-validate>
+            
+                <input  value="<?=$user['id'];?>" type="hidden" name="userId">
+
+                <div class="my-3">
                     <label class="form-label" for="firstName">First name</label>
-                    <input class="form-control" type="text" id="firstName" data-parsley-trigger="keyup"  data-parsley-minlength="3" data-parsley-maxlength="20"  required>
+                    <input value="<?=$user['first_name'];?>" class="form-control" type="text" name="firstName" data-parsley-trigger="keyup"  data-parsley-minlength="3" data-parsley-maxlength="20"  required>
                 </div>  
                 </div>   
                 <div class="my-3">
                     <label class="form-label" for="lastName">Last name</label>
-                    <input class="form-control" type="text" id="lastName" data-parsley-trigger="keyup"  data-parsley-minlength="3" data-parsley-maxlength="20"  required>
+                    <input value="<?=$user['last_name'];?>" class="form-control" type="text" name="lastName" data-parsley-trigger="keyup"  data-parsley-minlength="3" data-parsley-maxlength="20"  required>
                 </div>   
                 <div class="my-3">
                     <label class="form-label" for="email">email address</label>
-                    <input class="form-control" type="email" id="email" data-parsley-trigger="keyup"  data-parsley-type="email"  required>
+                    <input value="<?=$user['email'];?>" class="form-control" type="email" name="email" data-parsley-trigger="keyup"  data-parsley-type="email"  required>
                 </div>   
                 <div class="my-3">
                     <label class="form-label" for="password">password</label>
-                    <input class="form-control" type="password" id="password" data-parsley-trigger="keyup"  data-parsley-minlength="8" required>
+                    <input value="<?=$user['password'];?>" class="form-control" type="password" name="password" data-parsley-trigger="keyup"  data-parsley-minlength="8" required>
                 </div>      
-                <button style="width: 100%;" type="submit" id="save-acc" name="save" class="buttonAcc my-4 btn btn-primary border-0" > S A V E </button>
+                <div class="my-3">
+                    <label class="form-label" for="pfp">Profile picture</label>
+                    <input class="form-control" type="file" name="pfp" accept=" .jpg, .png, .jpeg"  >
+		        </div>  
+                <button style="width: 100%;" type="submit" name="update" class="buttonAcc my-4 btn btn-primary border-0" > U P D A T E </button>
+                
+ 
             </form>
      </section>
     </section>

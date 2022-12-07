@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
   <div class="container">
     <a class="navbar-brand me-5" href="#">YouTickets.com</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item px-2 ">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="../pages/landingPage.php">Home</a>
         </li>
         <li class="nav-item px-2 ">
           <a class="nav-link text-black" href="#">About</a>
@@ -24,8 +24,24 @@
         
       </ul>
       <form class="d-flex">
+        <?php
+        if(isset($_SESSION['userId'])){
+          $users=Display();
+        ?>
+        <h6 class="d-flex align-self-center" >Welcome  <?= $users['first_name'];?> </h6>
+        <div class="mx-3 dropdown">
+          <img style="width:3rem; height:3rem;" class="dropdown-toggle rounded-circle" role="button" data-bs-toggle="dropdown" aria-expanded="false" src="../assets/images/users pfp/<?php echo $users['image'];?>" alt="user pfp">
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../pages/profile.php?updateId=<?= $users['id'];?>">Edit profile</a></li>
+            <li><a class="dropdown-item" name="logout" href="#">Log out</a></li>
+            <li><form action="../controller/User_controller.php" method="POST"><button class="dropdown-item" type="submit" value="<?=$users['id'];?>" onclick="return confirm('do you really want to delete your account?')" name="deleteAcc" >Delete account</button></form></li>
+          </ul>
+        </div>
+        <?php }else{ ?>        
         <button class="btn btn-login px-3" type="submit">Log In</button>
         <button class="btn btn-signup ms-3 px-3" type="submit">Sign Up</button>
+        <?php }?>        
+        
       </form>
     </div>
   </div>

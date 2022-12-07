@@ -1,8 +1,5 @@
 <?php
-session_start();
 
-require 'shared.php';
-require '../model/Connection.php';
 require '../model/Reservation.php';
 
 use App\Classes\Reservation;
