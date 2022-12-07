@@ -388,3 +388,10 @@ main .information-match .match-info .ticket:hover{
     -ms-transform: scale(1.05);
     -o-transform: scale(1.05);
 }
+
+
+@media only screen and (max-width: 768px){
+    .profile{
+        display: inline-block !important;
+    }
+}
