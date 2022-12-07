@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require 'shared.php';
 require '../model/Connection.php';
@@ -9,7 +8,8 @@ use App\Classes\Matche;
 
 if (isset($_POST['save_match'])) save_match();
 if (isset($_POST['update_match'])) update_match();
-
+if (isset($_POST['delete_match'])) delete_match($_POST['delete_match']);
+if (isset($_POST['specific_match'])) get_specific_match($_POST['specific_match']);
 
 function save_match(): void
 {
@@ -26,15 +26,13 @@ function save_match(): void
         die;
     }
 
-    $match = new Matche(
-        "",
-        "$first_team_id",
-        "$second_team_id",
-        "$stadium_id",
-        "$ticket_price",
-        "$date_match",
-        "$description"
-    );
+    $match = new Matche();
+    $match->setFirstTeamId($first_team_id);
+    $match->setSecondTeamId($second_team_id);
+    $match->setStadiumId($stadium_id);
+    $match->setTicketPrice($ticket_price);
+    $match->setDateMatch($date_match);
+    $match->setDescription($description);
 
     if ($match->add()) {
         $_SESSION['message'] = "Match has been added successfully !";
@@ -60,15 +58,14 @@ function update_match(): void
         die;
     }
 
-    $match = new Matche(
-        "$id",
-        "$first_team_id",
-        "$second_team_id",
-        "$stadium_id",
-        "$ticket_price",
-        "$date_match",
-        "$description"
-    );
+    $match = new Matche();
+    $match->setId($id);
+    $match->setFirstTeamId($first_team_id);
+    $match->setSecondTeamId($second_team_id);
+    $match->setStadiumId($stadium_id);
+    $match->setTicketPrice($ticket_price);
+    $match->setDateMatch($date_match);
+    $match->setDescription($description);
 
     if ($match->update()) {
         $_SESSION['message'] = "Match has been updated successfully !";
@@ -76,4 +73,28 @@ function update_match(): void
         $_SESSION['message'] = "Error when update Match !";
     }
     header('location: ../pages/dashboard.php');
+}
+
+function delete_match($id): void
+{
+    $match = new Matche();
+    $match->setId($id);
+    if ($match->delete()) {
+        $_SESSION['message'] = "Match has been deleted successfully !";
+    } else {
+        $_SESSION['message'] = "Error when delete Match !";
+    }
+    header('location: ../pages/dashboard.php');
+}
+
+function get_specific_match($id): void
+{
+    header('Content-Type: application/json');
+
+    $match = new Matche();
+    $match->setId($id);
+
+    $aResult = $match->getSpecific();
+
+    echo json_encode($aResult);
 }
