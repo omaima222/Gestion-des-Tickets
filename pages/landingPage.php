@@ -63,11 +63,11 @@ include('../components/navBar.php');
                                                     " . separate_date($match['date'])[1] . "<br>" . separate_date($match['date'])[0] . "
                                                 </div>
                                                 <div class='col-9'>
-                                                    <p class='card-title'>Morocco Vs Croitia</p>
-                                                    <p class='card-text'>$match[ticket_price]</p>
+                                                    <p class='card-title'>$match[n_t1] Vs $match[n_t2]</p>
+                                                    <p class='card-text'>$ $match[ticket_price]</p>
                                                     <p class='card-text'>
                                                         <i class='fa-solid fa-location-dot'></i>
-                                                        Al Bayt Stadium
+                                                        $match[n_s]
                                                     </p>
                                                 </div>
                                                 

@@ -1,6 +1,21 @@
 <?php
 include_once 'top_dash.php';
 ?>
+<?php if (isset($_SESSION['message'])): ?>
+    <div class="d-flex justify-content-center">
+        <div class="alert alert-secondary alert-dismissible fade show mt-5 w-75">
+            <strong>Message : </strong>
+            <?php
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+            ?>
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+<?php endif ?>
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Stadiums</h1>

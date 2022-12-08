@@ -58,7 +58,7 @@ function update_match(): void
 
     if ($id == 'null' || $first_team_id == 'null' || $second_team_id == 'null' || $stadium_id == 'null' || $ticket_price == 'null' || $date_match == 'null' || $description == 'null') {
         $_SESSION['message'] = "Invalid inputs When Add Match !";
-        header('location: ../pages/dashboard.php');
+        header('location: match.php');
         die;
     }
 
@@ -76,7 +76,7 @@ function update_match(): void
     } else {
         $_SESSION['message'] = "Error when update Match !";
     }
-    header('location: ../pages/dashboard.php');
+    header('location: match.php');
 }
 
 function delete_match($id): void
