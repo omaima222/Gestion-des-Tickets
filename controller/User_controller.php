@@ -1,11 +1,9 @@
 <?php
 
-require '../model/Connection.php';
 require '../model/User.php';
 
 use App\Classes\User;
 
-session_start();
 
 
 

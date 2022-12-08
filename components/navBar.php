@@ -25,7 +25,6 @@
       </ul>
       <form class="d-flex">
         <?php
-        require '../controller/User_controller.php';            
         if(isset($_SESSION['userId'])){
           $users=Display();
         ?>
@@ -39,8 +38,8 @@
           </ul>
         </div>
         <?php }else{ ?>        
-        <button class="btn btn-login px-3" type="submit"><a class="userLinks" href="../pages/logIn.php">Log In</a></button>
-        <button class="btn btn-signup ms-3 px-3" type="submit"><a class="userLinks text-white" href="../pages/signUp.php">Sign Up</a></button>
+        <button class="btn btn-login px-3" type="submit"><a class="login" href="../pages/logIn.php">Log In</a></button>
+        <button class="btn btn-signup ms-3 px-3" type="submit"><a class="signup" href="../pages/signUp.php">Sign Up</a></button>
         <?php }?>        
         
       </form>
