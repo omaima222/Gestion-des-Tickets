@@ -18,8 +18,6 @@ class User extends Connection
     protected $image;
     protected $is_admin;
 
-
-
     public function signup(){
 
     
@@ -65,7 +63,7 @@ class User extends Connection
         $id         = $_POST["userId"]; 
         $pic        =$_FILES['pfp']['name'];
         $image      =$_FILES['pfp']['tmp_name'];
-        
+
         $stmt = $this->connect()->prepare("UPDATE user SET first_name= ? , last_name= ? , email= ? ,
         password=? ,image=?   WHERE id='$id' ");
 
@@ -78,7 +76,6 @@ class User extends Connection
         header("Location:../pages/landingPage.php");
 
     }
-
     
     public function delete($id){
         $stmt = $this->connect()->prepare("DELETE FROM user WHERE id=?");
@@ -102,9 +99,7 @@ class User extends Connection
         unset($_SESSION['userId']);
         header("Location:../index.php");    
 
-    }
-    
-    
+    } 
 }
 
 

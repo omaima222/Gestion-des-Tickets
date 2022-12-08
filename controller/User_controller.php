@@ -2,6 +2,9 @@
 
 require '../model/Connection.php';
 require '../model/User.php';
+require '../model/Reservation.php';
+
+use App\Classes\Reservation;
 
 use App\Classes\User;
 
@@ -63,6 +66,12 @@ function Display(){
 function Delete(){
     $user = new User();
     $user->delete($_SESSION['userId']);
+}
+
+function DisplayReservations(){
+    $reservation = new Reservation();
+    $reservation->setSpectatorId($_SESSION['userId']);
+    return $reservation->getSpecific();
 }
 
 
