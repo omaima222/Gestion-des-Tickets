@@ -1,6 +1,4 @@
 <?php
-require_once '../controller/shared.php';
-
 include('../components/head.php');
 include('../components/navBar.php');
 ?>

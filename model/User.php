@@ -6,85 +6,93 @@ use PDO;
 use PDOException;
 
 
-
-
 class User extends Connection
 {
-    protected $id;
-    protected $first_name;
-    protected $last_name;
-    protected $email;
-    protected $password;
-    protected $image;
-    protected $is_admin;
+    public $id;
+    public $first_name;
+    public $last_name;
+    public $email;
+    public $password;
+    public $image;
+    public $pic;
+    public $is_admin;
+
+    //=================================== setters ===================================//
+    
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    public function setFirstName($first_name): void
+    {
+        $this->first_name = $first_name;
+    }
+
+    public function setLastName($last_name): void
+    {
+        $this->last_name =  $last_name;
+    }
+
+    public function setEmail($email): void
+    {
+        $this->email = $email;
+    }
+
+    public function setPassword($password): void
+    {
+        $this->password = $password;
+    }
+
+    public function setImage($image): void
+    {
+        $this->image = $image;
+    }
+
+    public function setPic($pic): void
+    {
+        $this->pic = $pic;
+    }
+    
+
+    public function setAdmin($is_admin): void
+    {
+        $this->is_admin = $is_admin;
+    }
 
 
+    //=================================== methods ===================================//
 
     public function signup(){
-
-    
-        $first_name = $_POST["SfirstName"];
-        $last_name  = $_POST["SlastName"];
-        $email      = $_POST["Semail"];
-        $password   = $_POST["Spassword"];
-        $pic        =$_FILES['pfp']['name'];
-        $image      =$_FILES['pfp']['tmp_name'];
     
         $stmt = $this->connect()->prepare("INSERT INTO user VALUES ( ?,?,?,?,?,?,? )");
-
-        if(empty($pic)){
-            $stmt->execute([NULL,$first_name,$last_name,$email,$password,1,'user.png']);
-        }else{
-            $stmt->execute([NULL,$first_name,$last_name,$email,$password,1,$pic]);
-        }
-
-        move_uploaded_file($image, '../assets/images/users pfp/'.$pic);
-        header("Location:../pages/login.php");
+        $stmt->execute([NULL,$this->first_name,$this->last_name,$this->email,$this->password,1,$this->pic]);
+        move_uploaded_file($this->image, '../assets/images/users pfp/'.$this->pic);
 
     }
 
     public function login(){
-
-
-        $email      = $_POST["email"];
-        $password   = $_POST["password"];
     
         $stmt = $this->connect()->prepare("SELECT * FROM user WHERE email=? AND password=?");
-        $stmt->execute([$email,$password]);
+        $stmt->execute([$this->email,$this->password]);
         $user = $stmt->fetch();
 
         return $user;
     }
     
-    public function update(){
-
-        $first_name = $_POST["firstName"];
-        $last_name  = $_POST["lastName"];
-        $email      = $_POST["email"];
-        $password   = $_POST["password"];
-        $id         = $_POST["userId"]; 
-        $pic        =$_FILES['pfp']['name'];
-        $image      =$_FILES['pfp']['tmp_name'];
+    public function update($id){
         
         $stmt = $this->connect()->prepare("UPDATE user SET first_name= ? , last_name= ? , email= ? ,
-        password=? ,image=?   WHERE id='$id' ");
-
-        if(empty($pic)){
-            $stmt->execute([$first_name,$last_name,$email,$password,'user.png']);
-        }else{  
-            $stmt->execute([$first_name,$last_name,$email,$password,$pic]);
-        }
-        move_uploaded_file($image, '../assets/images/users pfp/'.$pic);
-        header("Location:../pages/landingPage.php");
+        password=? ,image=?   WHERE id='$id' ");  
+        $stmt->execute([$this->first_name,$this->last_name,$this->email,$this->password,$this->pic]);      
+        move_uploaded_file($this->image, '../assets/images/users pfp/'.$this->pic);
 
     }
-
     
     public function delete($id){
         $stmt = $this->connect()->prepare("DELETE FROM user WHERE id=?");
         $stmt->execute([$id]);
         unset($_SESSION['userId']);
-        header("Location:../index.php");
     } 
 
     public function display( $id ){
@@ -98,13 +106,8 @@ class User extends Connection
     } 
 
     public function logout(){
-
         unset($_SESSION['userId']);
-        header("Location:../index.php");    
-
-    }
-    
-    
+    } 
 }
 
 

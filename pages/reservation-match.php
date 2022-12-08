@@ -1,11 +1,9 @@
 <?php
     include('../components/head.php');
-
+    include('../components/navBar.php');
 ?>
     
-        <?php
-            include('../components/navBar.php');
-        ?>
+
     
     <main>
         <section class="information-match">

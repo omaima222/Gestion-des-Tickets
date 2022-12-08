@@ -19,18 +19,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">team vs team</th>
-                    <td>00-00-000 00-00</td>
-                    <td>000.000$</td>
+                <?php
+                    $rsrvs=DisplayReservations();
+                    foreach($rsrvs as $rsrv){ ?>
+                    <tr>
+                    <th scope="row"><?=$rsrv['name'];?> vs <?=$rsrv['name'];?></th>
+                    <td><?=$rsrv['reservation_date'];?></td>
+                    <td><?=$rsrv['ticket_price'];?>$</td>
                     <td><button class="buttonDownload p-2"><i class="bi bi-download"></i> &nbsp Download</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">team vs team</th>
-                    <td>00-00-000 00-00</td>
-                    <td>000.000$</td>
-                    <td><button class="buttonDownload p-2"><i class="bi bi-download"></i> &nbsp Download</button></td>
-                </tr>
+                    </tr> 
+                <?php  }?>
             </tbody>
         </table>
     </div>

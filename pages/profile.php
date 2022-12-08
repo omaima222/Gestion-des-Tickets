@@ -14,7 +14,7 @@
             <button  class="buttonAcc my-4 btn btn-primary"><a class="text-decoration-none text-white" href="reservation.php">Reservations</a></button>
         </section>
         <section>
-            <form action="../controller/User_controller.php" class="my-3" method="POST" enctype="multipart/form-data"  data-parsley-validate>         
+            <form action="landingPage.php" class="my-3" method="POST" enctype="multipart/form-data"  data-parsley-validate>
                 <input  value="<?=$user['id'];?>" type="hidden" name="userId">
                 <div class="my-3">
                     <label class="form-label" for="firstName">First name</label>

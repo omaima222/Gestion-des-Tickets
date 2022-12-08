@@ -56,7 +56,10 @@ class Reservation extends Connection
     public function getSpecific(): bool|array
     {
         try {
-            $sql = "SELECT * FROM reservations WHERE spectator_id = :spectator_id";
+            $sql = "SELECT * FROM reservations 
+                    INNER JOIN matchs on reservations.match_id=matchs.id
+                    INNER JOIN team   on matchs.team1_id=team.id AND  matchs.team2_id=team.id
+                    WHERE reservations.spectator_id = :spectator_id";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->bindParam(':spectator_id', $this->spectator_id, PDO::PARAM_INT);
