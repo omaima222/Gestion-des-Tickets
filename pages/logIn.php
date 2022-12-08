@@ -6,7 +6,7 @@
 <body class="userBody d-flex justify-content-center align-items-center">   
     <section style="box-shadow: 0px 5px 10px black; margin-top: 5rem;" class="px-5 rounded-3 bg-white">
       <h1 class="my-2">LOG IN</h1>
-      <form action="../controller/User_controller.php" method="POST" class="my-3" data-parsley-validate>
+      <form action="landingPage.php" method="POST" class="my-3" data-parsley-validate>
             <div class="my-3">
                       <?php if(isset( $_SESSION['errorlogin'])){ ?>
                         <div style="background-color: #f0abab;" class="text-black p-2 rounded-3 text-center"><?= $_SESSION['errorlogin'];?></div>

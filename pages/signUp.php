@@ -6,7 +6,7 @@
 <body class="userBody d-flex justify-content-center align-items-center  p-3"> 
     <section style="box-shadow: 0px 5px 10px black; margin-top: 5rem;" class="px-5 rounded-3 bg-white">
       <h1 class="my-2">SIGN UP</h1>
-      <form action="../controller/User_controller.php" class="my-3" method="POST" enctype="multipart/form-data"  data-parsley-validate>
+      <form action="landingPage.php" class="my-3" method="POST" enctype="multipart/form-data"  data-parsley-validate>
             <div class="my-3">
               <label class="form-label" for="pfp">Profile picture</label>
               <input class="form-control" type="file" name="pfp" accept=" .jpg, .png, .jpeg"  >
