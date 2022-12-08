@@ -91,23 +91,11 @@ function delete_match($id): void
     header('location: match.php');
 }
 
-function get_specific_match($id)
+function get_specific_match($id): void
 {
-    header('Content-Type: application/json');
-    $aResult = [];
-
     $match = new Matche();
     $match->setId($id);
-    $spe_match = $match->getSpecific();
 
-    $aResult[0] = $spe_match["id"];
-    $aResult[1] = $spe_match["team1_id"];
-    $aResult[2] = $spe_match["team2_id"];
-    $aResult[3] = $spe_match["stadium_id"];
-    $aResult[4] = $spe_match["ticket_price"];
-    $aResult[5] = $spe_match["date"];
-    $aResult[6] = $spe_match["description"];
-
-
-    echo json_encode($aResult);
+    echo json_encode($match->getSpecific());
+    die;
 }
