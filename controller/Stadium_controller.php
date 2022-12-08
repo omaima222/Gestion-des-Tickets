@@ -1,7 +1,5 @@
 <?php
 
-require 'shared.php';
-require '../model/Connection.php';
 require '../model/Stadiums.php';
 
 use App\Classes\Stadiums;

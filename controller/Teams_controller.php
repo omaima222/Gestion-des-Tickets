@@ -1,7 +1,5 @@
 <?php
 
-require 'shared.php';
-require '../model/Connection.php';
 require '../model/Teams.php';
 
 use App\Classes\Teams;

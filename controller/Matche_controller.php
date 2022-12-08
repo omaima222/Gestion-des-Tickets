@@ -1,7 +1,5 @@
 <?php
 
-require 'shared.php';
-require '../model/Connection.php';
 require '../model/Matche.php';
 
 use App\Classes\Matche;
@@ -10,6 +8,12 @@ if (isset($_POST['save_match'])) save_match();
 if (isset($_POST['update_match'])) update_match();
 if (isset($_POST['delete_match'])) delete_match($_POST['delete_match']);
 if (isset($_POST['specific_match'])) get_specific_match($_POST['specific_match']);
+
+function get_matchs(): bool|array
+{
+    $match = new Matche();
+    return $match->read();
+}
 
 function save_match(): void
 {
@@ -22,7 +26,7 @@ function save_match(): void
 
     if ($first_team_id == 'null' || $second_team_id == 'null' || $stadium_id == 'null' || $ticket_price == 'null' || $date_match == 'null' || $description == 'null') {
         $_SESSION['message'] = "Invalid inputs When Add Match !";
-        header('location: ../pages/dashboard.php');
+        header('location: match.php');
         die;
     }
 
@@ -39,7 +43,7 @@ function save_match(): void
     } else {
         $_SESSION['message'] = "Error when add Match !";
     }
-    header('location: ../pages/dashboard.php');
+    header('location: match.php');
 }
 
 function update_match(): void
@@ -84,17 +88,26 @@ function delete_match($id): void
     } else {
         $_SESSION['message'] = "Error when delete Match !";
     }
-    header('location: ../pages/dashboard.php');
+    header('location: match.php');
 }
 
-function get_specific_match($id): void
+function get_specific_match($id)
 {
     header('Content-Type: application/json');
+    $aResult = [];
 
     $match = new Matche();
     $match->setId($id);
+    $spe_match = $match->getSpecific();
 
-    $aResult = $match->getSpecific();
+    $aResult[0] = $spe_match["id"];
+    $aResult[1] = $spe_match["team1_id"];
+    $aResult[2] = $spe_match["team2_id"];
+    $aResult[3] = $spe_match["stadium_id"];
+    $aResult[4] = $spe_match["ticket_price"];
+    $aResult[5] = $spe_match["date"];
+    $aResult[6] = $spe_match["description"];
+
 
     echo json_encode($aResult);
 }

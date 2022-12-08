@@ -1,6 +1,5 @@
 <?php
 
-require '../model/Connection.php';
 require '../model/User.php';
 require '../model/Reservation.php';
 
@@ -8,7 +7,6 @@ use App\Classes\Reservation;
 
 use App\Classes\User;
 
-session_start();
 
 
 

@@ -25,7 +25,6 @@ body{
 }
 
 .navbar form  .btn-login{
-    color: var(--default);
     background-color: var(--color-primary);
     font-weight: normal;
     border: 1px solid var(--default);
@@ -36,14 +35,28 @@ body{
     -o-transition: all .3s ease-out;
 }
 
+.login{
+    text-decoration: none;
+    color: var(--default) ;
+}
+.navbar form  .btn-login:hover > .login{
+    color: var(--color-primary);
+}
+
+.signup{
+    text-decoration: none;
+    color: var(--color-primary);
+}
+.navbar form  .btn-signup:hover > .signup{
+    color: var(--default);
+}
+
 .navbar form  .btn-login:hover,
 .navbar form  .btn-login:focus{
-    color: var(--color-primary) !important;
     background-color: var(--default) !important;
 }
 
 .navbar form  .btn-signup{
-    color: var(--color-primary);
     background-color: var(--default);
     font-weight: normal;
     transition: all .3s ease-out;
@@ -55,7 +68,6 @@ body{
 
 .navbar form  .btn-signup:hover,
 .navbar form  .btn-signup:focus{
-    color: var(--default);
     background-color: var(--color-primary) !important;
     border: 1px solid var(--default) !important;
 }
@@ -107,7 +119,7 @@ header{
     width: 100%;
     background-image:
     linear-gradient(to bottom, rgba(255, 166, 158, 0.5), rgba(134, 22, 87, 0.5)),
-    url("../images/image\ 4.jpg"); 
+    url("../images/image 4.jpg");
     position: relative;
     background-position: center;
     background-repeat: no-repeat;
@@ -269,11 +281,6 @@ footer .social-links ul li{
 .buttonAcc:hover{
     color: var(--default)!important;
     background-color: var(--color-primary)!important;
-}
-
-.userLinks{
-    text-decoration: none;
-    color:var(--default) ;
 }
 
 .buttonDownload{
