@@ -4,7 +4,7 @@ include_once 'top_dash.php';
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Teams</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm shadow-sm text-white" style="background-color: #8A1538;"><i
+        <a href="#team_modal" data-bs-toggle="modal" class="d-none d-sm-inline-block btn btn-sm shadow-sm text-white" style="background-color: #8A1538;"><i
                     class="fa-solid fa-plus fa-md text-white"></i> Add Team</a>
     </div>
 
@@ -18,7 +18,8 @@ include_once 'top_dash.php';
                         <th>Logo</th>
                         <th>Name</th>
                         <th>Groupe</th>
-                        <th>Address</th>
+                        <th>Image</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tfoot>
@@ -26,7 +27,8 @@ include_once 'top_dash.php';
                         <th>Logo</th>
                         <th>Name</th>
                         <th>Groupe</th>
-                        <th>Address</th>
+                        <th>Image</th>
+                        <th></th>
                     </tr>
                     </tfoot>
                     <tbody>
@@ -42,6 +44,48 @@ include_once 'top_dash.php';
                     </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="team_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="dashboard.php" method="POST" id="form" enctype="multipart/form-data" data-parsley-validate>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Teams</h5>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="team-id" id="team-id">
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Logo:</label>
+                            <input type="file" class="form-control" name="team-logo" id="team-logo"
+                                   data-parsley-trigger="keyup" min="1" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Image:</label>
+                            <input type="file" class="form-control" name="team-image" id="team-image"
+                                   data-parsley-trigger="keyup" min="1" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Name:</label>
+                            <input type="text" class="form-control" name="team-name" id="team-name"
+                                   data-parsley-trigger="keyup" min="1" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Group:</label>
+                            <input type="text" class="form-control" name="team-group" id="team-group"
+                                   data-parsley-trigger="keyup" min="1" required/>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+                        <button type="submit" name="update_match" class="btn btn-warning" id="match-update-btn">Update</button>
+                        <button type="submit" name="save_match" class="btn btn-primary" id="match-save-btn">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

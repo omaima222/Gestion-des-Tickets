@@ -54,6 +54,7 @@ include('../components/navBar.php');
                     foreach (get_matchs() as $match) {
                         echo "
                                 <div class='item'>
+                                <a href='../pages/reservation-match.php' class='card-btn'>
                                     <div class='card'>
                                         <img class='img-fluid' alt='100%x280' src='../assets/images/Rectangle 2.jpg'>
                                         <div class='card-body'>
@@ -74,17 +75,18 @@ include('../components/navBar.php');
                                             </div>
                                         </div>
                                     </div>
+                                </a>    
                                 </div>";
                     }
                     ?>
                 </div>
-
         </section>
 
         <section class="teams-group mb-4">
             <div class="group">
                 <img src="../assets/images/image 5.jpg" alt="group image" style="width: 100%; height: 100vh;">
             </div>
+            
         </section>
 
 
