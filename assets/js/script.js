@@ -1,22 +1,22 @@
-// $(document).ready(function () {
-//     $(".owl-carousel").owlCarousel({
-//         margin: 20,
-//         autoplay: true,
-//         autoplayTimeout: 5000,
-//         autoplayHoverPause: true,
-//         responsive: {
-//             0: {
-//                 items: 1
-//             },
-//             600: {
-//                 items: 2
-//             },
-//             1000: {
-//                 items: 4
-//             }
-//         }
-//     });
-// });
+$(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+        margin: 20,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 4
+            }
+        }
+    });
+});
 
 $(document).ready(function () {
     $('#form').parsley();
@@ -33,21 +33,19 @@ document.querySelector("#add_match").addEventListener("click", () => {
 });
 
 function editMatch(id) {
-    console.log(id);
-    // document.getElementById('match-description').value= 'ghjkkh';
     $.ajax({
         type: "POST",
         url: 'dashboard.php',
         data: {specific_match: id},
         success: function (obj) {
-            // document.getElementById('match-first-team').value = obj[1];
-            // document.getElementById('match-second-team').value = obj[2];
-            // document.getElementById('match-stadium').value = obj[3];
-            // document.getElementById('match-ticket-price').value = obj[0];
-            // document.getElementById('match-date').value = obj[1];
-
-            document.getElementById('match-description').value = obj[0];
-            // document.getElementById('match-description').value = 'obj[]';
+            obj = JSON.parse(obj);
+            document.getElementById('match-id').value = obj[0];
+            document.getElementById('match-first-team').value = obj[1];
+            document.getElementById('match-second-team').value = obj[2];
+            document.getElementById('match-stadium').value = obj[3];
+            document.getElementById('match-ticket-price').value = obj[4];
+            document.getElementById('match-date').value = obj[5];
+            document.getElementById('match-description').value = obj[6];
         }
     });
 
