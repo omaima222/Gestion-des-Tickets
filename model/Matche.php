@@ -74,7 +74,7 @@ class Matche extends Connection
 
             $stmt->execute();
 
-            return $stmt->fetchAll();
+            return $stmt->fetch();
         } catch (PDOException $e) {
             echo "ERROR: Could not prepare/execute query: $sql. " . $e->getMessage();
             return false;
