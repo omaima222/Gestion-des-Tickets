@@ -213,7 +213,14 @@ if($_SESSION["isAdmin"]==0){
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Matchs Joués
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">28</div>
+                                        <?php 
+                                          $matchs=get_matchs();
+                                          $matchcount=0;
+                                          foreach($matchs as $match ){
+                                            $matchcount++;
+                                          }
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$matchcount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-regular fa-futbol fa-2x text-gray-300"></i>
@@ -232,7 +239,14 @@ if($_SESSION["isAdmin"]==0){
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Stades Disponible
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                                        <?php 
+                                          $stadiums=get_stadiums();
+                                          $stadiumcount=0;
+                                          foreach($stadiums as $stadium ){
+                                            $stadiumcount++;
+                                          }
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$stadiumcount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-house fa-2x text-gray-300"></i>
@@ -251,9 +265,18 @@ if($_SESSION["isAdmin"]==0){
                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Spectateurs
                                             Enregistrés
                                         </div>
+                                        <?php 
+                                          $users=Get_user();
+                                          $usercount=0;
+                                          foreach($users as $user ){
+                                            if($user['is_admin']==0){
+                                                $usercount++;
+                                            }
+                                          }
+                                        ?>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">11</div>
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?=$usercount?></div>
                                             </div>
                                             <div class="col">
 
@@ -277,7 +300,13 @@ if($_SESSION["isAdmin"]==0){
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             E-tickets Disponible
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">82099</div>
+                                        <?php 
+                                          $DisTicketscount=0;
+                                          foreach($stadiums as $stadium ){
+                                            $DisTicketscount=$stadium['capacity'];
+                                          }
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$DisTicketscount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-sharp fa-solid fa-ticket fa-2x text-gray-300"></i>
@@ -296,7 +325,14 @@ if($_SESSION["isAdmin"]==0){
                                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                             E-tickets Reservés
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">128017</div>
+                                        <?php 
+                                          $reservations= get_reservations();
+                                          $reservationscount=0;
+                                          foreach($reservations as $reservation ){
+                                            $reservationscount++;
+                                          }
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$reservationscount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-bookmark fa-2x text-gray-300"></i>
@@ -315,7 +351,10 @@ if($_SESSION["isAdmin"]==0){
                                         <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                             E-tickets Restants
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">2781</div>
+                                        <?php 
+                                          $RestTicketscount=$DisTicketscount-$reservationscount;
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$RestTicketscount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-clipboard-list fa-2x text-gray-300"></i>

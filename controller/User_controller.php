@@ -77,7 +77,6 @@ function Update(){
 } 
 
 function Display(){
-
     $user = new User();
     return $user->display($_SESSION['userId']);
 }
@@ -92,6 +91,11 @@ function DisplayReservations(){
     $reservation = new Reservation();
     $reservation->setSpectatorId($_SESSION['userId']);
     return $reservation->getSpecific();
+}
+
+function Get_user(){
+    $user = new User();
+    return $user->get_user();
 }
 
 

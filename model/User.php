@@ -110,6 +110,14 @@ class User extends Connection
         unset($_SESSION['userId']);
         unset($_SESSION['isAdmin']);
     } 
+
+
+    public function get_user(){
+        $stmt = $this->connect()->prepare("SELECT * FROM user");
+        $stmt->execute();
+        $users = $stmt->fetchAll();
+        return  $users; 
+    } 
 }
 
 
