@@ -1,11 +1,16 @@
 <?php
 
-require '../model/Reservation.php';
 
 use App\Classes\Reservation;
 
 if (isset($_POST['reserve'])) reserve();
 if (isset($_POST['delete_reservation'])) delete_reservation($_POST['delete_reservation']);
+
+function get_reservations(): bool|array
+{
+    $reservation = new Reservation();
+    return $reservation->read();
+}
 
 function reserve(): void
 {

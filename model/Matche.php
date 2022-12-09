@@ -52,7 +52,11 @@ class Matche extends Connection
     public function read(): bool|array
     {
         try {
-            $sql = "SELECT * FROM matchs";
+            $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description
+                    FROM matchs AS m
+                    INNER JOIN team AS t ON m.team1_id = t.id 
+                    INNER JOIN team AS t2 ON m.team2_id = t2.id
+                    INNER JOIN stadium AS s ON m.stadium_id = s.id";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->execute();
@@ -118,7 +122,7 @@ class Matche extends Connection
             $stmt->bindValue(4, $this->ticket_price);
             $stmt->bindValue(5, $this->date_match);
             $stmt->bindValue(6, $this->description, PDO::PARAM_STR);
-            $stmt->bindValue(7, $this->description, PDO::PARAM_INT);
+            $stmt->bindValue(7, $this->id, PDO::PARAM_INT);
 
             $stmt->execute();
 

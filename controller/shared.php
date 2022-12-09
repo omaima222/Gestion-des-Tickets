@@ -5,6 +5,9 @@ session_start();
 require_once '../model/Connection.php';
 require_once '../controller/Matche_controller.php';
 require_once '../controller/User_controller.php';
+require_once '../controller/Stadium_controller.php';
+require_once '../controller/Teams_controller.php';
+require_once '../controller/Reservation_controller.php';
 
 function validate_input($input, $type): string
 {
