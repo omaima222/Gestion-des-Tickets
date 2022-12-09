@@ -41,7 +41,12 @@ class Reservation extends Connection
     public function read(): bool|array
     {
         try {
-            $sql = "SELECT * FROM reservations";
+            $sql = "SELECT u.first_name, u.last_name, t.name AS n_t1, t2.name AS n_t2, r.quantity, r.reservation_date
+                    FROM reservations AS r
+                    INNER JOIN matchs AS m ON r.match_id = m.id
+                    INNER JOIN team AS t ON m.team2_id = t.id 
+                    INNER JOIN team AS t2 ON m.team1_id = t2.id
+                    INNER JOIN user AS u ON r.spectator_id = u.id";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->execute();

@@ -3,7 +3,7 @@ include_once 'top_dash.php';
 ?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Spectateurs</h1>
+        <h1 class="h3 mb-0 text-gray-800">Reservations</h1>
     </div>
 
     <!-- DataTales Example -->
@@ -28,12 +28,17 @@ include_once 'top_dash.php';
                     </tr>
                     </tfoot>
                     <tbody>
-                    <tr>
-                        <td>Hisham Arfaoui</th>
-                        <td>Morocco vs Canada</th>
-                        <td>5</th>
-                        <td>10/11/2022</th>
-                    </tr>
+                    <?php
+                    foreach (get_reservations() as $reservation) {
+                        echo "
+                            <tr>
+                                <td>$reservation[first_name] $reservation[first_name]</td>
+                                <td>$reservation[n_t1] VS $reservation[n_t2]</td>
+                                <td>$reservation[quantity]</td>
+                                <td>$reservation[reservation_date]</td>
+                            </tr>";
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>

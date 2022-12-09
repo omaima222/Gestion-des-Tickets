@@ -98,159 +98,25 @@ include('../components/navBar.php');
                         <a href="#">View All </a>
                     </div>
                 </div>
-
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" class="indicators active" data-bs-target="#carouselExampleIndicators"
-                                data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" class="indicators" data-bs-target="#carouselExampleIndicators"
-                                data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" class="indicators" data-bs-target="#carouselExampleIndicators"
-                                data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        <button type="button" class="indicators" data-bs-target="#carouselExampleIndicators"
-                                data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
+                <div class="owl-carousel owl-theme">
+                    <?php
+                    foreach (get_teams() as $team) {
+                        echo "
+                             <div class='card'>
+                                <img class='img-fluid' alt='100%x280' src='../assets/images/Rectangle 2.jpg'>
+                                <div class='card-body'>
+                                    <div class='row '>
+                                        <p class='card-title'>$team[name] National Team</p>
+                                        <p class='card-text'>Group $team[groupe]</p>
+                                        <p class='card-text'>
+                                            <i class='fa-solid fa-location-dot'></i>
+                                            $team[name]
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators"
-                           data-bs-slide="next">
-                            <i class="fa-solid fa-circle-chevron-right fa-2x"></i>
-                        </a>
-                    </div>
-
+                            </div>";
+                    }
+                    ?>
                 </div>
         </section>
 
@@ -266,154 +132,25 @@ include('../components/navBar.php');
                     </div>
                 </div>
 
-                <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" class="indicators active" data-bs-target="#carouselExampleIndicators2"
-                                data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" class="indicators" data-bs-target="#carouselExampleIndicators2"
-                                data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
+                <div class="owl-carousel owl-theme">
+                    <?php
+                    foreach (get_stadiums() as $stadium) {
+                        echo "
+                             <div class='card'>
+                                <img class='img-fluid' alt='100%x280' src='../assets/images/Rectangle 2.jpg'>
+                                <div class='card-body'>
+                                    <div class='row '>
+                                        <p class='card-title'>$stadium[name]</p>
+                                        <p class='card-text'>Capacity: $stadium[capacity]</p>
+                                        <p class='card-text'>
+                                            <i class='fa-solid fa-location-dot'></i>
+                                            $stadium[address]
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="../assets/images/Rectangle 2.jpg">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <p class="card-title">Morocco National Team</p>
-                                                <p class="card-text">Group F</p>
-                                                <p class="card-text">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    Morocco
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators2"
-                           data-bs-slide="next">
-                            <i class="fa-solid fa-circle-chevron-right fa-2x"></i>
-                        </a>
-                    </div>
-
+                            </div>";
+                    }
+                    ?>
                 </div>
         </section>
     </main>

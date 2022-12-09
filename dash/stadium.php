@@ -19,7 +19,7 @@ include_once 'top_dash.php';
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Stadiums</h1>
-        <a href="#stadium_modal" data-bs-toggle="modal" class="d-none d-sm-inline-block btn btn-sm shadow-sm text-white" style="background-color: #8A1538;"><i
+        <a href="#stadium_modal" onclick="clearModal()" data-bs-toggle="modal" class="d-none d-sm-inline-block btn btn-sm shadow-sm text-white" style="background-color: #8A1538;"><i
                     class="fa-solid fa-plus fa-md text-white"></i> Add Stadium</a>
     </div>
 
@@ -47,12 +47,22 @@ include_once 'top_dash.php';
                     </tr>
                     </tfoot>
                     <tbody>
-                    <tr>
-                        <td>AL Bayt Stadium</td>
-                        <td>60.000</td>
-                        <td>Near Al Khor</td>
-                        <td><img src="Capture.PNG" alt="" style="height: 30px;"></td>
-                    </tr>
+                    <?php
+                    foreach (get_stadiums() as $stadium) {
+                        echo "
+                            <tr>
+                                <td>$stadium[name]</td>
+                                <td>$stadium[capacity]</td>
+                                <td>$stadium[address]</td>
+                                <td>$stadium[image]</td>
+                                <td>
+                                    <div class='d-flex justify-content-around'>
+                                        <i role='button' onclick='deleteItem(2,$stadium[id])' class='fa-solid fa-trash-can text-danger ms-3'></i>
+                                    </div>
+                                </td>
+                            </tr>";
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
@@ -65,36 +75,42 @@ include_once 'top_dash.php';
                 <form action="dashboard.php" method="POST" id="form" enctype="multipart/form-data" data-parsley-validate>
                     <div class="modal-header">
                         <h5 class="modal-title">Stadium</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="stad-id" id="stad-id">
+                        <input type="hidden" name="stadium-id" id="stadium-id">
                         <div class="mb-3">
                             <input type="file" class="form-control" name="stadium-image" id="stadium-image" accept="image/png, image/jpeg">
                         </div>
                         
                         <div class="mb-3">
-                            <label class="form-label">Name:</label>
-                            <input type="text" class="form-control" name="stad-name" id="stad-name"
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" name="stadium-name" id="stadium-name"
+                                   data-parsley-pattern="[a-zA-Z0-9\s]+"
+                                   data-parsley-pattern-message="Name must contain Letters & numbers only."
+                                   data-parsley-trigger="keyup" required/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Capacity</label>
+                            <input type="number" class="form-control" name="stadium-capacity" id="stadium-capacity"
                                    data-parsley-trigger="keyup" min="1" required/>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Capacity:</label>
-                            <input type="number" class="form-control" name="stad-capacity" id="stad-capacity"
-                                   data-parsley-trigger="keyup" min="1" required/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Address:</label>
-                            <input type="text" class="form-control" name="stad-address" id="stad-address"
-                                   data-parsley-trigger="keyup" min="1" required/>
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" name="stadium-address" id="stadium-address"
+                                   data-parsley-pattern="[a-zA-Z0-9\s]+"
+                                   data-parsley-pattern-message="Address must contain Letters & numbers only."
+                                   data-parsley-trigger="keyup" required/>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                        <button type="submit" name="update_match" class="btn btn-warning" id="match-update-btn">Update</button>
-                        <button type="submit" name="save_match" class="btn btn-primary" id="match-save-btn">Save</button>
+                        <button type="submit" name="save_stadium" class="btn btn-primary" id="stadium-save-btn">Save</button>
                     </div>
                 </form>
             </div>

@@ -1,7 +1,7 @@
 <?php
 include_once 'top_dash.php';
 ?>
-    <?php if (isset($_SESSION['message'])): ?>
+<?php if (isset($_SESSION['message'])): ?>
     <div class="d-flex justify-content-center">
         <div class="alert alert-secondary alert-dismissible fade show mt-5 w-75">
             <strong>Message : </strong>
@@ -63,7 +63,7 @@ include_once 'top_dash.php';
                                 <td>
                                     <div class='d-flex justify-content-around'>
                                         <i role='button' onclick='editMatch($match[id])' class='fa-solid fa-pen-to-square text-primary'></i>
-                                        <i role='button' onclick='deleteMatch($match[id])' class='fa-solid fa-trash-can text-danger ms-3'></i>
+                                        <i role='button' onclick='deleteItem(1,$match[id])' class='fa-solid fa-trash-can text-danger ms-3'></i>
                                     </div>
                                 </td>
                             </tr>";
@@ -98,7 +98,11 @@ include_once 'top_dash.php';
                                     <label class="form-label">Team 1</label>
                                     <select class="form-control form-select" id="match-first-team"
                                             name="match-first-team">
-                                        <option value="1">test</option>
+                                        <?php
+                                        foreach (get_teams() as $team) {
+                                            echo "<option value='$team[id]'>$team[name]</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -107,7 +111,11 @@ include_once 'top_dash.php';
                                     <label class="form-label">Team 2</label>
                                     <select class="form-control form-select" id="match-second-team"
                                             name="match-second-team">
-                                        <option value="1">test</option>
+                                        <?php
+                                        foreach (get_teams() as $team) {
+                                            echo "<option value='$team[id]'>$team[name]</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -115,7 +123,11 @@ include_once 'top_dash.php';
                         <div class="mb-3">
                             <label class="form-label">Stadium</label>
                             <select class="form-control form-select" id="match-stadium" name="match-stadium">
-                                <option value="3">test</option>
+                                <?php
+                                foreach (get_stadiums() as $stadium) {
+                                    echo "<option value='$stadium[id]'>$stadium[name]</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="mb-3">

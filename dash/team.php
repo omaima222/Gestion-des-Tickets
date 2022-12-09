@@ -19,7 +19,7 @@ include_once 'top_dash.php';
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Teams</h1>
-        <a href="#team_modal" data-bs-toggle="modal" class="d-none d-sm-inline-block btn btn-sm shadow-sm text-white" style="background-color: #8A1538;"><i
+        <a href="#team_modal" onclick="clearModal()" data-bs-toggle="modal" class="d-none d-sm-inline-block btn btn-sm shadow-sm text-white" style="background-color: #8A1538;"><i
                     class="fa-solid fa-plus fa-md text-white"></i> Add Team</a>
     </div>
 
@@ -47,16 +47,22 @@ include_once 'top_dash.php';
                     </tr>
                     </tfoot>
                     <tbody>
-                    <tr>
-                        <td><img src="Capture.PNG" alt="" style="height: 30px;">
-                        </th>
-                        <td>Morocco National Team
-                        </th>
-                        <td>F
-                        </th>
-                        <td>Morocco
-                        </th>
-                    </tr>
+                    <?php
+                    foreach (get_teams() as $team) {
+                        echo "
+                            <tr>
+                                <td>$team[logo]</td>
+                                <td>$team[name]</td>
+                                <td>$team[groupe]</td>
+                                <td>$team[image]</td>
+                                <td>
+                                    <div class='d-flex justify-content-around'>
+                                        <i role='button' onclick='deleteItem(3,$team[id])' class='fa-solid fa-trash-can text-danger ms-3'></i>
+                                    </div>
+                                </td>
+                            </tr>";
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
@@ -69,36 +75,47 @@ include_once 'top_dash.php';
                 <form action="dashboard.php" method="POST" id="form" enctype="multipart/form-data" data-parsley-validate>
                     <div class="modal-header">
                         <h5 class="modal-title">Teams</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="team-id" id="team-id">
                         
                         <div class="mb-3">
-                            <label class="form-label">Logo:</label>
-                            <input type="file" class="form-control" name="team-logo" id="team-logo"
-                                   data-parsley-trigger="keyup" min="1" required/>
+                            <label class="form-label">Logo</label>
+                            <input type="file" class="form-control" name="team-logo" id="team-logo" accept="image/png, image/jpeg"/>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Image:</label>
-                            <input type="file" class="form-control" name="team-image" id="team-image"
-                                   data-parsley-trigger="keyup" min="1" required/>
+                            <label class="form-label">Image</label>
+                            <input type="file" class="form-control" name="team-image" id="team-image" accept="image/png, image/jpeg"/>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Name:</label>
+                            <label class="form-label">Name</label>
                             <input type="text" class="form-control" name="team-name" id="team-name"
-                                   data-parsley-trigger="keyup" min="1" required/>
+                                   data-parsley-pattern="[a-zA-Z0-9\s]+"
+                                   data-parsley-pattern-message="Name must contain Letters & numbers only."
+                                   data-parsley-trigger="keyup" required/>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Group:</label>
-                            <input type="text" class="form-control" name="team-group" id="team-group"
-                                   data-parsley-trigger="keyup" min="1" required/>
+                            <label class="form-label">Group</label>
+                            <select class="form-control form-select" id="team-group"
+                                    name="team-group">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                            </select>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                        <button type="submit" name="update_match" class="btn btn-warning" id="match-update-btn">Update</button>
-                        <button type="submit" name="save_match" class="btn btn-primary" id="match-save-btn">Save</button>
+                        <button type="submit" name="save_team" class="btn btn-primary" id="team-save-btn">Save</button>
                     </div>
                 </form>
             </div>
