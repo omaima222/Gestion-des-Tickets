@@ -1,6 +1,9 @@
 <?php 
     include('../components/head.php');
     include('../components/navBar.php');
+    if(!isset($_SESSION['userId'])){
+        header('location:../index.php');
+    }
 ?>
 
 <body class="userBody d-flex justify-content-around align-items-center p-3"> 

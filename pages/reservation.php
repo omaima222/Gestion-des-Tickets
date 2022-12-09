@@ -1,6 +1,9 @@
 <?php 
     include('../components/head.php');
     include('../components/navBar.php');
+    if(!isset($_SESSION['userId'])){
+        header('location:../index.php');
+    }
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
@@ -23,7 +26,7 @@
                     $rsrvs=DisplayReservations();
                     foreach($rsrvs as $rsrv){ ?>
                     <tr>
-                    <th scope="row"><?=$rsrv['name'];?> vs <?=$rsrv['name'];?></th>
+                    <th scope="row"><?=$rsrv['tname'];?> vs <?=$rsrv['t2name'];?></th>
                     <td><?=$rsrv['reservation_date'];?></td>
                     <td><?=$rsrv['ticket_price'];?>$</td>
                     <td><button class="buttonDownload p-2"><i class="bi bi-download"></i> &nbsp Download</button></td>

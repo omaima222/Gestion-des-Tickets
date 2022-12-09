@@ -35,6 +35,9 @@
             <li><a class="dropdown-item" href="../pages/profile.php?updateId=<?= $users['id'];?>">Edit profile</a></li>
             <li><button class="dropdown-item" name="logout" type="submit" >Log out</button></li>
             <li><button class="dropdown-item" name="deleteAcc"  type="submit" onclick="return confirm('do you really want to delete your account?')" >Delete account</button></li>
+            <?php if( $users['is_admin']==1){  ?>
+            <li><a class="dropdown-item" href="../dash/dashboard.php">Dashboard</a></li>
+            <?php }?>        
           </ul>
         </div>
         <?php }else{ ?>        

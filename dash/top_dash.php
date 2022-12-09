@@ -1,5 +1,8 @@
 <?php
 require_once '../controller/shared.php';
+if($_SESSION["isAdmin"]==0){
+    header('location:../index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,30 +156,41 @@ require_once '../controller/shared.php';
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
+                        <?php
+                            if(isset($_SESSION['userId'])){
+                            $users=Display();
+                            if($users['is_admin']){
+                        ?>
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Welcome   <?= $users['first_name'];?></span>
                             <img class="img-profile rounded-circle"
-                                 src="Capture.PNG">
+                            src="../assets/images/users pfp/<?php echo $users['image'];?>">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="../pages/profile.php?updateId=<?= $_SESSION['userId'];?>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
+                                Edit Profile
                             </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
+                            <a class="dropdown-item" href="../pages/landingPage.php" >
+                                <i class="fas fa-house fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Home
                             </a>
-
+                            <form action="dashboard.php" method="GET">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <button class="dropdown-item btn" href="#" data-toggle="modal" data-target="#logoutModal"  name="logout" type="submit">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
-                            </a>
+                            </button>
+                            <button class="dropdown-item btn" href="#" data-toggle="modal" data-target="#logoutModal" name="deleteAcc"  type="submit" onclick="return confirm('do you really want to delete your account?')" >
+                                <i class="fas fa-trash-can fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Delet account
+                            </button>
+                            </form>
                         </div>
+                        <?php } } ?>
                     </li>
 
                 </ul>
