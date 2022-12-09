@@ -5,36 +5,40 @@ require '../model/Teams.php';
 use App\Classes\Teams;
 
 if (isset($_POST['save_team'])) save_team();
-if (isset($_POST['delete_team'])) delete_stadium($_POST['delete_team']);
+if (isset($_POST['delete_team'])) delete_team($_POST['delete_team']);
+
+function get_teams(): bool|array
+{
+    $team = new Teams();
+    return $team->read();
+}
 
 function save_team(): void
 {
     $name = validate_input("{$_POST['team-name']}", 'text');
-    $logo = validate_input("{$_POST["team-logo"]}", 'pass');
-    $image = validate_input("{$_POST["team-image"]}", 'pass');
-    $groupe = validate_input("{$_POST["team-groupe"]}", 'selectAlphabet');
+    $logo = '';/*validate_input("{$_POST["team-logo"]}", 'pass');*/
+    $image = '';/*validate_input("{$_POST["team-image"]}", 'pass');*/
+    $group = validate_input("{$_POST["team-group"]}", 'selectAlphabet');
 
-    if ($name == 'null' || $logo == 'null' || $image == 'null' || $groupe == 'null') {
+    if ($name == 'null' || $logo == 'null' || $image == 'null' || $group == 'null') {
         $_SESSION['message'] = "Invalid inputs When Add team !";
-        header('location: ../pages/dashboard.php');
+        header('location: team.php');
         die;
     }
 
     $team = new Teams();
-    $team->setId($id);
     $team->setName($name);
     $team->setLogo($logo);
     $team->setImage($image);
-    $team->setGroupe($groupe);
+    $team->setGroupe($group);
 
     if ($team->add()) {
         $_SESSION['message'] = "Team has been added successfully !";
     } else {
         $_SESSION['message'] = "Error when add team !";
     }
-    header('location: ../pages/dashboard.php');
+    header('location: team.php');
 }
-
 
 function delete_team($id): void
 {
@@ -45,5 +49,5 @@ function delete_team($id): void
     } else {
         $_SESSION['message'] = "Error when delete team !";
     }
-    header('location: ../pages/dashboard.php');
+    header('location: team.php');
 }

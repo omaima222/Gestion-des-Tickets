@@ -83,7 +83,7 @@ if($_SESSION["isAdmin"]==0){
         <li class="nav-item">
             <a class="nav-link" href="spectateur.php">
                 <i class="fa-solid fa-user"></i>
-                <span>Spectateurs</span></a>
+                <span>Reservations</span></a>
         </li>
 
         <!-- Divider -->

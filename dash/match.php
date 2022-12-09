@@ -1,11 +1,28 @@
 <?php
 include_once 'top_dash.php';
 ?>
+<?php if (isset($_SESSION['message'])): ?>
+    <div class="d-flex justify-content-center">
+        <div class="alert alert-secondary alert-dismissible fade show mt-5 w-75">
+            <strong>Message : </strong>
+            <?php
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+            ?>
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+<?php endif ?>
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Matchs</h1>
-        <button id="add_match" class="d-none d-sm-inline-block btn btn-sm shadow-sm text-white" style="background-color: #8A1538;"><i
-                    class="fa-solid fa-plus fa-md text-white"></i> Add Match</button>
+        <button id="add_match" class="d-none d-sm-inline-block btn btn-sm shadow-sm text-white"
+                style="background-color: #8A1538;"><i
+                    class="fa-solid fa-plus fa-md text-white"></i> Add Match
+        </button>
     </div>
 
     <!-- DataTales Example -->
@@ -35,18 +52,18 @@ include_once 'top_dash.php';
                     </tfoot>
                     <tbody>
                     <?php
-                    foreach (get_matchs() as $match){
+                    foreach (get_matchs() as $match) {
                         echo "
                             <tr>
-                                <td>Morocco</td>
-                                <td>Canada</td>
+                                <td>$match[n_t1]</td>
+                                <td>$match[n_t2]</td>
                                 <td>$match[ticket_price] $</td>
-                                <td>Al Bayt Stadium</td>
+                                <td>$match[n_s]</td>
                                 <td>$match[date]</td>
                                 <td>
                                     <div class='d-flex justify-content-around'>
                                         <i role='button' onclick='editMatch($match[id])' class='fa-solid fa-pen-to-square text-primary'></i>
-                                        <i role='button' onclick='deleteMatch($match[id])' class='fa-solid fa-trash-can text-danger ms-3'></i>
+                                        <i role='button' onclick='deleteItem(1,$match[id])' class='fa-solid fa-trash-can text-danger ms-3'></i>
                                     </div>
                                 </td>
                             </tr>";
@@ -57,32 +74,48 @@ include_once 'top_dash.php';
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="match_modal">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="dashboard.php" method="POST" id="form" enctype="multipart/form-data" data-parsley-validate>
+                <form action="dashboard.php" method="POST" id="form" enctype="multipart/form-data"
+                      data-parsley-validate>
                     <div class="modal-header">
                         <h5 class="modal-title">Match</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="match-id" id="match-id">
                         <div class="mb-3">
-                            <input type="file" class="form-control" name="match-image" id="match-image" accept="image/png, image/jpeg">
+                            <input type="file" class="form-control" name="match-image" id="match-image"
+                                   accept="image/png, image/jpeg">
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
                                     <label class="form-label">Team 1</label>
-                                    <select class="form-control form-select" id="match-first-team" name="match-first-team">
-                                        <option value="1">test</option>
+                                    <select class="form-control form-select" id="match-first-team"
+                                            name="match-first-team">
+                                        <?php
+                                        foreach (get_teams() as $team) {
+                                            echo "<option value='$team[id]'>$team[name]</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
                                     <label class="form-label">Team 2</label>
-                                    <select class="form-control form-select" id="match-second-team" name="match-second-team">
-                                        <option value="1">test</option>
+                                    <select class="form-control form-select" id="match-second-team"
+                                            name="match-second-team">
+                                        <?php
+                                        foreach (get_teams() as $team) {
+                                            echo "<option value='$team[id]'>$team[name]</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -90,13 +123,17 @@ include_once 'top_dash.php';
                         <div class="mb-3">
                             <label class="form-label">Stadium</label>
                             <select class="form-control form-select" id="match-stadium" name="match-stadium">
-                                <option value="3">test</option>
+                                <?php
+                                foreach (get_stadiums() as $stadium) {
+                                    echo "<option value='$stadium[id]'>$stadium[name]</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Price</label>
                             <input type="number" class="form-control" name="match-ticket-price" id="match-ticket-price"
-                                   data-parsley-trigger="keyup" min="1" required/>
+                                   data-parsley-trigger="keyup" min="1" step="0.01" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Date</label>
@@ -114,8 +151,10 @@ include_once 'top_dash.php';
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                        <button type="submit" name="update_match" class="btn btn-warning" id="match-update-btn">Update</button>
-                        <button type="submit" name="save_match" class="btn btn-primary" id="match-save-btn">Save</button>
+                        <button type="submit" name="update_match" class="btn btn-warning" id="match-update-btn">Update
+                        </button>
+                        <button type="submit" name="save_match" class="btn btn-primary" id="match-save-btn">Save
+                        </button>
                     </div>
                 </form>
             </div>

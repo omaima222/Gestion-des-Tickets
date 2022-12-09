@@ -32,6 +32,10 @@ document.querySelector("#add_match").addEventListener("click", () => {
     document.querySelector("#match-update-btn").style.cssText = 'display: none;';
 });
 
+function clearModal() {
+    document.querySelector("#form").reset();
+}
+
 function editMatch(id) {
     $.ajax({
         type: "POST",
@@ -55,7 +59,7 @@ function editMatch(id) {
     document.querySelector("#match-update-btn").style.cssText = 'display: block;';
 }
 
-function deleteMatch(id){
+function deleteItem(item, id) {
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -66,14 +70,34 @@ function deleteMatch(id){
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            $.ajax({
-                type: "POST",
-                url: 'dashboard.php',
-                data: {delete_match : id},
-                success: function (obj) {
-                    location.reload();
-                }
-            });
+            if (item == 1) {
+                $.ajax({
+                    type: "POST",
+                    url: 'dashboard.php',
+                    data: {delete_match: id},
+                    success: function (obj) {
+                        location.reload();
+                    }
+                });
+            } else if (item == 2) {
+                $.ajax({
+                    type: "POST",
+                    url: 'dashboard.php',
+                    data: {delete_stadium: id},
+                    success: function (obj) {
+                        location.reload();
+                    }
+                });
+            } else if (item == 3) {
+                $.ajax({
+                    type: "POST",
+                    url: 'dashboard.php',
+                    data: {delete_team: id},
+                    success: function (obj) {
+                        location.reload();
+                    }
+                });
+            }
         }
     });
 }
