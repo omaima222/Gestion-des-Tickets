@@ -1,5 +1,8 @@
 <?php
 require_once '../controller/shared.php';
+if($_SESSION["isAdmin"]==0){
+    header('location:../index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,30 +156,41 @@ require_once '../controller/shared.php';
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
+                        <?php
+                            if(isset($_SESSION['userId'])){
+                            $users=Display();
+                            if($users['is_admin']){
+                        ?>
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Welcome   <?= $users['first_name'];?></span>
                             <img class="img-profile rounded-circle"
-                                 src="Capture.PNG">
+                            src="../assets/images/users pfp/<?php echo $users['image'];?>">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="../index.php">
-                                <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                            <a class="dropdown-item" href="../pages/profile.php?updateId=<?= $_SESSION['userId'];?>">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Edit Profile
+                            </a>
+                            <a class="dropdown-item" href="../pages/landingPage.php" >
+                                <i class="fas fa-house fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Home
                             </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
-                            </a>
-
+                            <form action="dashboard.php" method="GET">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <button class="dropdown-item btn" href="#" data-toggle="modal" data-target="#logoutModal"  name="logout" type="submit">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
-                            </a>
+                            </button>
+                            <button class="dropdown-item btn" href="#" data-toggle="modal" data-target="#logoutModal" name="deleteAcc"  type="submit" onclick="return confirm('do you really want to delete your account?')" >
+                                <i class="fas fa-trash-can fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Delet account
+                            </button>
+                            </form>
                         </div>
+                        <?php } } ?>
                     </li>
 
                 </ul>
@@ -199,7 +213,14 @@ require_once '../controller/shared.php';
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Matchs Joués
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">28</div>
+                                        <?php 
+                                          $matchs=get_matchs();
+                                          $matchcount=0;
+                                          foreach($matchs as $match ){
+                                            $matchcount++;
+                                          }
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$matchcount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-regular fa-futbol fa-2x text-gray-300"></i>
@@ -218,7 +239,14 @@ require_once '../controller/shared.php';
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Stades Disponible
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                                        <?php 
+                                          $stadiums=get_stadiums();
+                                          $stadiumcount=0;
+                                          foreach($stadiums as $stadium ){
+                                            $stadiumcount++;
+                                          }
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$stadiumcount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-house fa-2x text-gray-300"></i>
@@ -237,9 +265,18 @@ require_once '../controller/shared.php';
                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Spectateurs
                                             Enregistrés
                                         </div>
+                                        <?php 
+                                          $users=Get_user();
+                                          $usercount=0;
+                                          foreach($users as $user ){
+                                            if($user['is_admin']==0){
+                                                $usercount++;
+                                            }
+                                          }
+                                        ?>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">11</div>
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?=$usercount?></div>
                                             </div>
                                             <div class="col">
 
@@ -263,7 +300,13 @@ require_once '../controller/shared.php';
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             E-tickets Disponible
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">82099</div>
+                                        <?php 
+                                          $DisTicketscount=0;
+                                          foreach($stadiums as $stadium ){
+                                            $DisTicketscount=$stadium['capacity'];
+                                          }
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$DisTicketscount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-sharp fa-solid fa-ticket fa-2x text-gray-300"></i>
@@ -282,7 +325,14 @@ require_once '../controller/shared.php';
                                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                             E-tickets Reservés
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">128017</div>
+                                        <?php 
+                                          $reservations= get_reservations();
+                                          $reservationscount=0;
+                                          foreach($reservations as $reservation ){
+                                            $reservationscount++;
+                                          }
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$reservationscount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-bookmark fa-2x text-gray-300"></i>
@@ -301,7 +351,10 @@ require_once '../controller/shared.php';
                                         <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                             E-tickets Restants
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">2781</div>
+                                        <?php 
+                                          $RestTicketscount=$DisTicketscount-$reservationscount;
+                                        ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$RestTicketscount?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-clipboard-list fa-2x text-gray-300"></i>

@@ -7,15 +7,12 @@ use App\Classes\Reservation;
 use App\Classes\User;
 
 
-if(isset($_POST["signup"]))  Signup();
-if(isset($_POST["login"]))  Login();
-if(isset($_POST["update"]))  Update();
-if(isset($_GET["updateId"]))  Display();
+if(isset($_POST["signup"]))    Signup();
+if(isset($_POST["login"]))     Login();
+if(isset($_POST["update"]))    Update();
+if(isset($_GET["updateId"]))   Display();
 if(isset($_GET["deleteAcc"]))  Delete();
-if(isset($_GET["logout"]))  Logout();
-
-
-
+if(isset($_GET["logout"]))     Logout();
 
 
 function Signup(){
@@ -38,16 +35,15 @@ function Signup(){
 
 function Login(){
     $user = new User();
-    
+
     $user->setEmail($_POST["email"]);
     $user->setPassword($_POST["password"]);
 
     $result = $user->login();
     if($result){
+        $_SESSION['isAdmin']=$result['is_admin'];
         $_SESSION['userId']=$result['id'];
         header("Location:landingPage.php");
-        // var_dump($result['id']);
-
     }else{
         $_SESSION['errorlogin']="incorrect inputs";
         header("Location:login.php");
@@ -61,7 +57,7 @@ function Logout(){
        $user->logout();
        var_dump($user);
     }
-    header("Location:landingPage.php");    
+    header("Location: ../index.php");    
 }
 
 function Update(){
@@ -81,7 +77,6 @@ function Update(){
 } 
 
 function Display(){
-
     $user = new User();
     return $user->display($_SESSION['userId']);
 }
@@ -89,13 +84,18 @@ function Display(){
 function Delete(){
     $user = new User();
     $user->delete($_SESSION['userId']);
-    header("Location:landingPage.php");
+    header("Location: ../index.php");    
 }
 
 function DisplayReservations(){
     $reservation = new Reservation();
     $reservation->setSpectatorId($_SESSION['userId']);
     return $reservation->getSpecific();
+}
+
+function Get_user(){
+    $user = new User();
+    return $user->get_user();
 }
 
 

@@ -1,6 +1,6 @@
 <?php
-include('../components/head.php');
-include('../components/navBar.php');
+    include('../components/head.php');
+    include('../components/navBar.php');
 ?>
 
     <header>

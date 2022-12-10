@@ -66,7 +66,7 @@ class User extends Connection
     public function signup(){
     
         $stmt = $this->connect()->prepare("INSERT INTO user VALUES ( ?,?,?,?,?,?,? )");
-        $stmt->execute([NULL,$this->first_name,$this->last_name,$this->email,$this->password,1,$this->pic]);
+        $stmt->execute([NULL,$this->first_name,$this->last_name,$this->email,$this->password,0,$this->pic]);
         move_uploaded_file($this->image, '../assets/images/users pfp/'.$this->pic);
 
     }
@@ -93,6 +93,7 @@ class User extends Connection
         $stmt = $this->connect()->prepare("DELETE FROM user WHERE id=?");
         $stmt->execute([$id]);
         unset($_SESSION['userId']);
+        unset($_SESSION['isAdmin']);
     } 
 
     public function display( $id ){
@@ -107,6 +108,15 @@ class User extends Connection
 
     public function logout(){
         unset($_SESSION['userId']);
+        unset($_SESSION['isAdmin']);
+    } 
+
+
+    public function get_user(){
+        $stmt = $this->connect()->prepare("SELECT * FROM user");
+        $stmt->execute();
+        $users = $stmt->fetchAll();
+        return  $users; 
     } 
 }
 
