@@ -51,10 +51,10 @@ include_once 'top_dash.php';
                     foreach (get_teams() as $team) {
                         echo "
                             <tr>
-                                <td>$team[logo]</td>
+                                <td><img class='rounded' src='../assets/images/team/$team[logo]' style='height: 30px'></td>
                                 <td>$team[name]</td>
                                 <td>$team[groupe]</td>
-                                <td>$team[image]</td>
+                                <td><img class='rounded' src='../assets/images/team/$team[image]' style='height: 30px'></td>
                                 <td>
                                     <div class='d-flex justify-content-around'>
                                         <i role='button' onclick='deleteItem(3,$team[id])' class='fa-solid fa-trash-can text-danger ms-3'></i>
@@ -84,11 +84,11 @@ include_once 'top_dash.php';
                         
                         <div class="mb-3">
                             <label class="form-label">Logo</label>
-                            <input type="file" class="form-control" name="team-logo" id="team-logo" accept="image/png, image/jpeg"/>
+                            <input type="file" class="form-control" name="team-logo" id="team-logo" accept="image/png, image/jpeg" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Image</label>
-                            <input type="file" class="form-control" name="team-image" id="team-image" accept="image/png, image/jpeg"/>
+                            <input type="file" class="form-control" name="team-image" id="team-image" accept="image/png, image/jpeg" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Name</label>

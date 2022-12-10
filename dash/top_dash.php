@@ -12,7 +12,7 @@ require_once '../controller/shared.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Match</title>
+    <title>Dashboard</title>
 
     <!-- Custom fonts for this template -->
     <script src="https://kit.fontawesome.com/f57667c685.js" crossorigin="anonymous"></script>

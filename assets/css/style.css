@@ -396,6 +396,10 @@ main .information-match .match-info .ticket:hover{
     -o-transform: scale(1.05);
 }
 
+.owl-carousel .owl-item img{
+    height: 200px;
+}
+
 
 @media only screen and (max-width: 768px){
     .profile{

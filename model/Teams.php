@@ -39,9 +39,9 @@ class Teams extends Connection{
 
 
     //Méthode d'affichage ----------------
-    function read() : bool|array{
+    function read($condition = '') : bool|array{
         try{
-            $sql = "SELECT * FROM team";
+            $sql = "SELECT * FROM team $condition";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->execute();

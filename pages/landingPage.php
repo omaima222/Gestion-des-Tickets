@@ -54,7 +54,7 @@ include('../components/navBar.php');
                                 <div class='item'>
                                 <a href='../pages/reservation-match.php' class='card-btn'>
                                     <div class='card'>
-                                        <img class='img-fluid' alt='100%x280' src='../assets/images/Rectangle 2.jpg'>
+                                        <img class='img-fluid' alt='100%x280' src='../assets/images/match/$match[image]'>
                                         <div class='card-body'>
                                             <div class='row align-items-center'>
                                                 <div class='col-3'>
@@ -82,7 +82,7 @@ include('../components/navBar.php');
 
         <section class="teams-group mb-4">
             <div class="group">
-                <img src="../assets/images/image 5.jpg" alt="group image" style="width: 100%; height: 100vh;">
+                <img src="../assets/images/image 5.jpg" alt="group image" style="width: 100%;">
             </div>
             
         </section>
@@ -103,7 +103,7 @@ include('../components/navBar.php');
                     foreach (get_teams() as $team) {
                         echo "
                              <div class='card'>
-                                <img class='img-fluid' alt='100%x280' src='../assets/images/Rectangle 2.jpg'>
+                                <img class='img-fluid' alt='100%x280' src='../assets/images/team/$team[image]'>
                                 <div class='card-body'>
                                     <div class='row '>
                                         <p class='card-title'>$team[name] National Team</p>
@@ -137,7 +137,7 @@ include('../components/navBar.php');
                     foreach (get_stadiums() as $stadium) {
                         echo "
                              <div class='card'>
-                                <img class='img-fluid' alt='100%x280' src='../assets/images/Rectangle 2.jpg'>
+                                <img class='img-fluid' alt='100%x280' src='../assets/images/stadium/$stadium[image]'>
                                 <div class='card-body'>
                                     <div class='row '>
                                         <p class='card-title'>$stadium[name]</p>

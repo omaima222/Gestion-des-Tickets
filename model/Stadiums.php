@@ -39,9 +39,9 @@ class Stadiums extends Connection{
 
 
     //Méthode d'affichage ----------------
-    function read() : bool|array{
+    function read($condition = '') : bool|array{
         try{
-            $sql = "SELECT * FROM stadium";
+            $sql = "SELECT * FROM stadium $condition";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->execute();
