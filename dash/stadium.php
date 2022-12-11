@@ -54,7 +54,7 @@ include_once 'top_dash.php';
                                 <td>$stadium[name]</td>
                                 <td>$stadium[capacity]</td>
                                 <td>$stadium[address]</td>
-                                <td>$stadium[image]</td>
+                                <td><img class='rounded' src='../assets/images/stadium/$stadium[image]' style='height: 30px'></td>
                                 <td>
                                     <div class='d-flex justify-content-around'>
                                         <i role='button' onclick='deleteItem(2,$stadium[id])' class='fa-solid fa-trash-can text-danger ms-3'></i>
@@ -82,7 +82,7 @@ include_once 'top_dash.php';
                     <div class="modal-body">
                         <input type="hidden" name="stadium-id" id="stadium-id">
                         <div class="mb-3">
-                            <input type="file" class="form-control" name="stadium-image" id="stadium-image" accept="image/png, image/jpeg">
+                            <input type="file" class="form-control" name="stadium-image" id="stadium-image" accept="image/png, image/jpeg" required>
                         </div>
                         
                         <div class="mb-3">

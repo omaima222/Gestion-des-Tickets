@@ -32,6 +32,7 @@ include_once 'top_dash.php';
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Team 1</th>
                         <th>Team 2</th>
                         <th>Price</th>
@@ -42,6 +43,7 @@ include_once 'top_dash.php';
                     </thead>
                     <tfoot>
                     <tr>
+                        <th>Image</th>
                         <th>Team 1</th>
                         <th>Team 2</th>
                         <th>Price</th>
@@ -55,6 +57,7 @@ include_once 'top_dash.php';
                     foreach (get_matchs() as $match) {
                         echo "
                             <tr>
+                                <td><img class='rounded' src='../assets/images/match/$match[image]' style='height: 30px'></td>
                                 <td>$match[n_t1]</td>
                                 <td>$match[n_t2]</td>
                                 <td>$match[ticket_price] $</td>

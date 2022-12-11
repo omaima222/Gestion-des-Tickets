@@ -18,9 +18,9 @@ function save_stadium(): void
     $name = validate_input("{$_POST['stadium-name']}", 'text');
     $capacity = validate_input("{$_POST["stadium-capacity"]}", 'select');
     $address = validate_input("{$_POST["stadium-address"]}", 'text');
-    $image =''; /*validate_input("{$_POST["stadium-image"]}", 'pass');*/
+    $image = upload_image($_FILES["stadium-image"], 'stadium');
 
-    if ($name == 'null' || $capacity == 'null' || $address == 'null' || $image == 'null') {
+    if ($name == 'null' || $capacity == 'null' || $address == 'null' || $image == '') {
         $_SESSION['message'] = "Invalid inputs When Add Stadium !";
         header('location: stadium.php');
         die;
@@ -44,6 +44,7 @@ function delete_Stadium($id): void
 {
     $stadium = new Stadiums();
     $stadium->setId($id);
+    delete_image($stadium->read("WHERE id = $id")[0]['image'], 'stadium');
     if ($stadium->delete()) {
         $_SESSION['message'] = "Stadium has been deleted successfully !";
     } else {

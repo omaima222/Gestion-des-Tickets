@@ -10,7 +10,7 @@ class Matche extends Connection
     // property's
     private int $id, $first_team_id, $second_team_id, $stadium_id;
     private float $ticket_price;
-    private string $date_match, $description;
+    private string $date_match, $description, $image;
 
     // setters
     public function setId($id): void
@@ -48,11 +48,16 @@ class Matche extends Connection
         $this->description = $description;
     }
 
+    public function setImage(string $image): void
+    {
+        $this->image = $image;
+    }
+
     // methods crud
     public function read(): bool|array
     {
         try {
-            $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description
+            $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description, m.image
                     FROM matchs AS m
                     INNER JOIN team AS t ON m.team1_id = t.id 
                     INNER JOIN team AS t2 ON m.team2_id = t2.id
@@ -88,7 +93,7 @@ class Matche extends Connection
     public function add(): bool
     {
         try {
-            $sql = "INSERT INTO matchs VALUES (NULL, :first_team_id, :second_team_id, :stadium_id, :ticket_price, :date_match, :description)";
+            $sql = "INSERT INTO matchs VALUES (NULL, :first_team_id, :second_team_id, :stadium_id, :ticket_price, :date_match, :description, :image)";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->bindParam(':first_team_id', $this->first_team_id, PDO::PARAM_INT);
@@ -97,6 +102,7 @@ class Matche extends Connection
             $stmt->bindParam(':ticket_price', $this->ticket_price);
             $stmt->bindParam(':date_match', $this->date_match);
             $stmt->bindParam(':description', $this->description, PDO::PARAM_STR);
+            $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
 
             $stmt->execute();
 
@@ -113,16 +119,22 @@ class Matche extends Connection
     public function update(): bool
     {
         try {
-            $sql = "UPDATE matchs SET `team1_id`=?,`team2_id`=?,`stadium_id`=?,`ticket_price`=?,`date`=?,`description`=? WHERE `id`=?";
-            $stmt = $this->connect()->prepare($sql);
+            if ($this->image == '') {
+                $sql = "UPDATE matchs SET `team1_id`=:first_team_id,`team2_id`=:second_team_id,`stadium_id`=:stadium_id,`ticket_price`=:ticket_price,`date`=:date_match,`description`=:description WHERE `id`=:id";
+                $stmt = $this->connect()->prepare($sql);
+            } else {
+                $sql = "UPDATE matchs SET `team1_id`=:first_team_id,`team2_id`=:second_team_id,`stadium_id`=:stadium_id,`ticket_price`=:ticket_price,`date`=:date_match,`description`=:description,`image`=:image WHERE `id`=:id";
+                $stmt = $this->connect()->prepare($sql);
+                $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
+            }
 
-            $stmt->bindValue(1, $this->first_team_id, PDO::PARAM_INT);
-            $stmt->bindValue(2, $this->second_team_id, PDO::PARAM_INT);
-            $stmt->bindValue(3, $this->stadium_id, PDO::PARAM_INT);
-            $stmt->bindValue(4, $this->ticket_price);
-            $stmt->bindValue(5, $this->date_match);
-            $stmt->bindValue(6, $this->description, PDO::PARAM_STR);
-            $stmt->bindValue(7, $this->id, PDO::PARAM_INT);
+            $stmt->bindParam(':first_team_id', $this->first_team_id, PDO::PARAM_INT);
+            $stmt->bindParam(':second_team_id', $this->second_team_id, PDO::PARAM_INT);
+            $stmt->bindParam(':stadium_id', $this->stadium_id, PDO::PARAM_INT);
+            $stmt->bindParam(':ticket_price', $this->ticket_price);
+            $stmt->bindParam(':date_match', $this->date_match);
+            $stmt->bindParam(':description', $this->description, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
 
             $stmt->execute();
 

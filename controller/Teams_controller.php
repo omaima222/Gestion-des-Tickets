@@ -16,11 +16,11 @@ function get_teams(): bool|array
 function save_team(): void
 {
     $name = validate_input("{$_POST['team-name']}", 'text');
-    $logo = '';/*validate_input("{$_POST["team-logo"]}", 'pass');*/
-    $image = '';/*validate_input("{$_POST["team-image"]}", 'pass');*/
+    $logo = upload_image($_FILES["team-logo"], 'team');
+    $image = upload_image($_FILES["team-image"], 'team');
     $group = validate_input("{$_POST["team-group"]}", 'selectAlphabet');
 
-    if ($name == 'null' || $logo == 'null' || $image == 'null' || $group == 'null') {
+    if ($name == 'null' || $logo == '' || $image == '' || $group == 'null') {
         $_SESSION['message'] = "Invalid inputs When Add team !";
         header('location: team.php');
         die;
@@ -44,6 +44,9 @@ function delete_team($id): void
 {
     $team = new Teams();
     $team->setId($id);
+    $arr = $team->read("WHERE id = $id");
+    delete_image($arr[0]['logo'], 'team');
+    delete_image($arr[0]['image'], 'team');
     if ($team->delete()) {
         $_SESSION['message'] = "Team has been deleted successfully !";
     } else {
