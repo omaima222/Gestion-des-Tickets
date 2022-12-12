@@ -61,7 +61,7 @@ class Reservation extends Connection
     public function getSpecific(): bool|array
     {
         try {
-            $sql = "SELECT ticket_price,spectator_id,reservation_date,t.name AS tname,t2.name AS t2name FROM reservations              
+            $sql = "SELECT reservations.id,ticket_price,spectator_id,reservation_date,t.name AS tname,t2.name AS t2name FROM reservations              
             INNER JOIN matchs on reservations.match_id=matchs.id
             INNER JOIN team as t  on matchs.team1_id=t.id 
             INNER JOIN team as t2 on matchs.team2_id=t2.id
@@ -73,6 +73,25 @@ class Reservation extends Connection
             $stmt->execute();
 
             return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "ERROR: Could not prepare/execute query: $sql. " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getSpecificTicket($id): bool|array
+    {
+        try {
+            $sql = "SELECT reservations.id,ticket_price,spectator_id,reservation_date,t.name AS tname,t2.name AS t2name, stadium.name AS Sname, matchs.image AS mimage FROM reservations              
+            INNER JOIN matchs on reservations.match_id=matchs.id
+            INNER JOIN team as t  on matchs.team1_id=t.id 
+            INNER JOIN team as t2 on matchs.team2_id=t2.id
+            INNER JOIN stadium on matchs.stadium_id=stadium.id 
+            WHERE reservations.id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
+
+            return $stmt->fetch();
         } catch (PDOException $e) {
             echo "ERROR: Could not prepare/execute query: $sql. " . $e->getMessage();
             return false;

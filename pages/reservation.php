@@ -1,7 +1,7 @@
 <?php 
     include('../components/head.php');
     include('../components/navBar.php');
-    if(!isset($_SESSION['userId'])){
+        if(!isset($_SESSION['userId'])){
         header('location:../index.php');
     }
 ?>
@@ -29,7 +29,7 @@
                     <th scope="row"><?=$rsrv['tname'];?> vs <?=$rsrv['t2name'];?></th>
                     <td><?=$rsrv['reservation_date'];?></td>
                     <td><?=$rsrv['ticket_price'];?>$</td>
-                    <td><button class="buttonDownload p-2"><i class="bi bi-download"></i> &nbsp Download</button></td>
+                    <td><button  class="buttonDownload p-2"><a class="userLinks"  href="ticket.php?TicketId=<?=$rsrv['id'];?>"><i class="bi bi-exclamation-circle"></i> &nbsp Ticket Details</a></button></td>
                     </tr> 
                 <?php  }?>
             </tbody>
