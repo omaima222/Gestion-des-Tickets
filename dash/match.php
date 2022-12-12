@@ -1,4 +1,5 @@
 <?php
+$today = date("Y-m-d H:i");
 include_once 'top_dash.php';
 ?>
 <?php if (isset($_SESSION['message'])): ?>
@@ -141,7 +142,7 @@ include_once 'top_dash.php';
                         <div class="mb-3">
                             <label class="form-label">Date</label>
                             <input type="datetime-local" class="form-control" name="match-date" id="match-date"
-                                   data-parsley-trigger="keyup" required/>
+                                   data-parsley-trigger="keyup" min="<?= $today ?>" required/>
                         </div>
                         <div class="mb-0">
                             <label class="form-label">Description</label>

@@ -52,7 +52,7 @@
                     foreach (get_matchs() as $match) {
                         echo "
                                 <div class='item'>
-                                <a href='../pages/reservation-match.php' class='card-btn'>
+                                <a href='../pages/reservation-match.php?matchId=$match[id]' class='card-btn'>
                                     <div class='card'>
                                         <img class='img-fluid' alt='100%x280' src='../assets/images/match/$match[image]'>
                                         <div class='card-body'>

@@ -101,3 +101,20 @@ function deleteItem(item, id) {
         }
     });
 }
+
+function onSubmitReserve() {
+    let quantity = document.querySelector('#reservation-quantity').value;
+    Swal.fire({
+        title: 'Are you sure?',
+        text: `Confirm Reserve ${quantity} Tickets for this Match`,
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Confirm'
+    }).then((result) => {
+        if(result.isConfirmed){
+            document.querySelector('#reserve-btn').click();
+        }
+    });
+}

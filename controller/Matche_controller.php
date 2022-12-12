@@ -16,6 +16,12 @@ function get_matchs(): bool|array
     return $match->read();
 }
 
+function get_spec_match($id): bool|array
+{
+    $match = new Matche();
+    return $match->read("WHERE m.id = $id");
+}
+
 function save_match(): void
 {
     $first_team_id = validate_input("{$_POST['match-first-team']}", 'select');

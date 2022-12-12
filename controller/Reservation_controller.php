@@ -17,11 +17,11 @@ function reserve(): void
     $spectator_id = validate_input("{$_POST['reservation-spectator']}", 'select');
     $match_id = validate_input("{$_POST["reservation-match"]}", 'select');
     $quantity = validate_input("{$_POST["reservation-quantity"]}", 'select');
-    $date_reservation = $_POST["reservation-date"];
+    $date_reservation = date("Y-m-d H:i:s");
 
     if ($spectator_id == 'null' || $match_id == 'null' || $quantity == 'null' || $date_reservation == 'null') {
         $_SESSION['message'] = "Invalid inputs When Reserve !";
-        header('location: ../pages/dashboard.php');
+        header('location: ../index.php');
         die;
     }
 
@@ -36,7 +36,7 @@ function reserve(): void
     } else {
         $_SESSION['message'] = "Error when Reserve !";
     }
-    header('location: ../pages/dashboard.php');
+    header('location: ../index.php');
 }
 
 function delete_reservation($id): void
