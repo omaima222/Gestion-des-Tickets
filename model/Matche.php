@@ -57,7 +57,7 @@ class Matche extends Connection
     public function read($condition = ''): bool|array
     {
         try {
-            $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description, m.image
+            $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description, m.image, s.capacity
                     FROM matchs AS m
                     INNER JOIN team AS t ON m.team1_id = t.id 
                     INNER JOIN team AS t2 ON m.team2_id = t2.id

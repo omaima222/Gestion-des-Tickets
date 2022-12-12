@@ -6,10 +6,10 @@ use App\Classes\Reservation;
 if (isset($_POST['reserve'])) reserve();
 if (isset($_POST['delete_reservation'])) delete_reservation($_POST['delete_reservation']);
 
-function get_reservations(): bool|array
+function get_reservations($condition = ''): bool|array
 {
     $reservation = new Reservation();
-    return $reservation->read();
+    return $reservation->read($condition);
 }
 
 function reserve(): void

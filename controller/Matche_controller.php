@@ -3,17 +3,16 @@
 require '../model/Matche.php';
 
 use App\Classes\Matche;
-use JetBrains\PhpStorm\NoReturn;
 
 if (isset($_POST['save_match'])) save_match();
 if (isset($_POST['update_match'])) update_match();
 if (isset($_POST['delete_match'])) delete_match($_POST['delete_match']);
 if (isset($_POST['specific_match'])) get_specific_match($_POST['specific_match']);
 
-function get_matchs(): bool|array
+function get_matchs($condition = ''): bool|array
 {
     $match = new Matche();
-    return $match->read();
+    return $match->read($condition);
 }
 
 function get_spec_match($id): bool|array
@@ -24,6 +23,8 @@ function get_spec_match($id): bool|array
 
 function save_match(): void
 {
+    $today = date('Y-m-d h:i:s');
+
     $first_team_id = validate_input("{$_POST['match-first-team']}", 'select');
     $second_team_id = validate_input("{$_POST["match-second-team"]}", 'select');
     $stadium_id = validate_input("{$_POST["match-stadium"]}", 'select');
@@ -34,6 +35,16 @@ function save_match(): void
 
     if ($first_team_id == 'null' || $second_team_id == 'null' || $stadium_id == 'null' || $ticket_price == 'null' || $date_match == 'null' || $description == 'null' || $image == '') {
         $_SESSION['message'] = "Invalid inputs When Add Match !";
+        header('location: match.php');
+        die;
+    }
+    if ($date_match < $today) {
+        $_SESSION['message'] = "Date invalid When Add Match !";
+        header('location: match.php');
+        die;
+    }
+    if ($first_team_id == $second_team_id) {
+        $_SESSION['message'] = "Cannot play match with same team !";
         header('location: match.php');
         die;
     }
@@ -57,6 +68,8 @@ function save_match(): void
 
 function update_match(): void
 {
+    $today = date('Y-m-d h:i:s');
+
     $id = validate_input("{$_POST['match-id']}", 'select');
     $first_team_id = validate_input("{$_POST['match-first-team']}", 'select');
     $second_team_id = validate_input("{$_POST["match-second-team"]}", 'select');
@@ -71,6 +84,16 @@ function update_match(): void
         header('location: match.php');
         die;
     }
+    if ($date_match < $today) {
+        $_SESSION['message'] = "Date invalid When Add Match !";
+        header('location: match.php');
+        die;
+    }
+    if ($first_team_id == $second_team_id) {
+        $_SESSION['message'] = "Cannot play match with same team !";
+        header('location: match.php');
+        die;
+    }
 
     $match = new Matche();
     $match->setId($id);
@@ -82,7 +105,7 @@ function update_match(): void
     $match->setDescription($description);
     $match->setImage($image);
 
-    if($image != ''){
+    if ($image != '') {
         delete_image($match->getSpecific()['image'], 'match');
     }
 

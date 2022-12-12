@@ -38,7 +38,7 @@ class Reservation extends Connection
     }
 
     // methods
-    public function read(): bool|array
+    public function read($condition = ''): bool|array
     {
         try {
             $sql = "SELECT u.first_name, u.last_name, t.name AS n_t1, t2.name AS n_t2, r.quantity, r.reservation_date
@@ -46,7 +46,8 @@ class Reservation extends Connection
                     INNER JOIN matchs AS m ON r.match_id = m.id
                     INNER JOIN team AS t ON m.team2_id = t.id 
                     INNER JOIN team AS t2 ON m.team1_id = t2.id
-                    INNER JOIN user AS u ON r.spectator_id = u.id";
+                    INNER JOIN user AS u ON r.spectator_id = u.id
+                    $condition";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->execute();

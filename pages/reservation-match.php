@@ -11,6 +11,11 @@
     if(!$match){
         header('location: ../index.php');
     }
+
+    $took = get_reservations("WHERE r.match_id = {$match[0]['id']}");
+    $ticket_available = $match[0]['capacity'] - count($took);
+
+    $today = date('Y-m-d h:i:s');
 ?>
 
 
@@ -63,7 +68,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (isset($_SESSION['userId'])): ?>
+                                <?php if (isset($_SESSION['userId']) && $ticket_available > 0 && $match[0]['date'] > $today): ?>
                                 <div class="col-4">
                                     <div class="ticket">
                                         <div class="ticket-price">
@@ -73,17 +78,18 @@
                                             </div>
                                         </div>
                                         <form id="form" method="post" action="landingPage.php" data-parsley-validate>
-                                            <input type="number" name="reservation-spectator" value="<?= $_SESSION['userId'] ?>">
-                                            <input type="number" name="reservation-match" value="<?= $match[0]['id'] ?>">
-                                            <div class="my-2">
+                                            <input type="hidden" name="reservation-spectator" value="<?= $_SESSION['userId'] ?>">
+                                            <input type="hidden" name="reservation-match" value="<?= $match[0]['id'] ?>">
+                                            <div class="d-none">
                                                 <label class="form-label">Quantity: </label>
                                                 <input type="number" name="reservation-quantity" id="reservation-quantity"
-                                                       data-parsley-trigger="keyup" min="1" value="1" required/>
+                                                       data-parsley-trigger="keyup" min="1" max="1" value="1" required/>
                                             </div>
                                             <button id="reserve-btn" type="submit" name="reserve" hidden></button>
                                             <button type="button" class="btn w-100" onclick="onSubmitReserve()">
                                                 Reserve your  E-Tickets
                                             </button>
+                                            <p class="text-success m-0" style="font-size: 14px">Available( <?= $ticket_available ?> )</p>
                                         </form>
                                     </div>
                                 </div>

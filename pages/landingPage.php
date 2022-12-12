@@ -49,7 +49,8 @@
 
                 <div class="owl-carousel owl-theme">
                     <?php
-                    foreach (get_matchs() as $match) {
+                    $today = date('Y-m-d h:i:s');
+                    foreach (get_matchs("WHERE m.date > '$today'") as $match) {
                         echo "
                                 <div class='item'>
                                 <a href='../pages/reservation-match.php?matchId=$match[id]' class='card-btn'>
