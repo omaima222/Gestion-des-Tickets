@@ -59,6 +59,24 @@ function editMatch(id) {
     document.querySelector("#match-update-btn").style.cssText = 'display: block;';
 }
 
+// onsubmit = (event) => {
+//     event.preventDefault();
+
+//  }
+
+ $("#search").onsubmit(function(){
+    $.ajax({
+      type:'POST',
+      url:'search.php',
+      data:{
+        name:$("#search-input").val(),
+      },
+      success:function(data){
+        $("#output").html(data);
+      }
+    });
+  });
+
 function deleteItem(item, id) {
     Swal.fire({
         title: 'Are you sure?',

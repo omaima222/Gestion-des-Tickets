@@ -73,6 +73,27 @@ class Matche extends Connection
         }
     }
 
+    // search method
+    public function searchMatch($search_match){
+        try {
+            $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description, m.image
+                    FROM matchs AS m
+                    INNER JOIN team AS t ON m.team1_id = t.id 
+                    INNER JOIN team AS t2 ON m.team2_id = t2.id
+                    INNER JOIN stadium AS s ON m.stadium_id = s.id
+                    WHERE t.name LIKE ('%$search_match%') OR t2.name LIKE('%$search_match%')";
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "ERROR: Could not prepare/execute query: $sql. " . $e->getMessage();
+            return false;
+        }
+    }
+
+
     public function getSpecific(): bool|array
     {
         try {

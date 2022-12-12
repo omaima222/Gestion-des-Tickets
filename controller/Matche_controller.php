@@ -13,7 +13,12 @@ if (isset($_POST['specific_match'])) get_specific_match($_POST['specific_match']
 function get_matchs(): bool|array
 {
     $match = new Matche();
-    return $match->read();
+    if(isset($_POST['search'])){
+        $search_match = $_POST['search-match'];
+        return $match->searchMatch($search_match);
+    }else{
+        return $match->read();
+    }
 }
 
 function save_match(): void
