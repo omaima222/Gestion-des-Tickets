@@ -257,6 +257,7 @@ footer .social-links ul li{
     margin: 0 1rem;
 }
 
+/* User related style start */
 
 .userBody{
     background-color: var(--default) ;
@@ -305,6 +306,32 @@ footer .social-links ul li{
     border-radius: 0.5rem;
 
 }
+
+.ticketDetails{
+
+    border-bottom: 0.2rem dashed rgba(0, 0, 0, 0.446);
+
+}
+.userLinks{
+    text-decoration: none;
+    color: var(--color-primary);
+}
+.userLinks:hover{
+    color: var(--default);
+}
+
+@media only screen and (max-width: 768px){
+    .profile{
+        display: inline-block !important;
+    }
+    .matchTicketDetails{
+        display: inline-block !important;
+    }
+
+}
+
+/* User related style end */
+
 
 
 /* style button of all clicked cards */
@@ -401,8 +428,3 @@ main .information-match .match-info .ticket:hover{
 }
 
 
-@media only screen and (max-width: 768px){
-    .profile{
-        display: inline-block !important;
-    }
-}

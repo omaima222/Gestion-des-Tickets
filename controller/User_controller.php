@@ -98,6 +98,9 @@ function Get_user(){
     return $user->get_user();
 }
 
-
+function displayTicket(){
+    $ticket = new Reservation();
+    return $ticket->getSpecificTicket($_GET['TicketId']);
+}
 
 ?>

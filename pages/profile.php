@@ -14,7 +14,7 @@
         <section  class="text-center me-5">
             <h1 class="my-2">My Profile</h1>
             <img style="width:10rem; height:10rem;" class="rounded-circle" src="../assets/images/users pfp/<?php echo $user['image'];?>" alt="user profile picture">
-            <button  class="buttonAcc my-4 btn btn-primary"><a class="text-decoration-none text-white" href="reservation.php">Reservations</a></button>
+            <button  class="buttonAcc my-4 btn btn-primary"><a class="userLinks" href="reservation.php">Reservations</a></button>
         </section>
         <section>
             <form action="landingPage.php" class="my-3" method="POST" enctype="multipart/form-data"  data-parsley-validate>
