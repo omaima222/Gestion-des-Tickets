@@ -17,13 +17,13 @@ include('../components/navBar.php');
                     <div class="col">
                         <div class="form-group ">
                             <input type="text" name="search-match" class="form-control" id="search-input"
-                                   placeholder="Search by matchs, teams..." required>
+                                   placeholder="Search by matchs, teams...">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group ">
-                            <input type="date" class="form-control" name="date" placeholder="Select date"
-                                   id="match-date"/>
+                            <input type="text" class="form-control" name="date" placeholder="yyyy-mm-dd / yyyy-mm-dd" value=""
+                                   id="search-date"/>
                         </div>
                     </div>
                     <div class="col">

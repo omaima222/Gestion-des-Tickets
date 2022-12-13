@@ -32,7 +32,7 @@ function reserve(): void
     $reservation->setDateReservation($date_reservation);
 
     if ($reservation->reserve()) {
-        $_SESSION['message'] = "Reservation has been added successfully !";
+//        $_SESSION['message'] = "Reservation has been added successfully !";
     } else {
         $_SESSION['message'] = "Error when Reserve !";
     }
@@ -48,6 +48,6 @@ function delete_reservation($id): void
     } else {
         $_SESSION['message'] = "Error when delete Reservation !";
     }
-    header('location: ../view/home.php');
+//    header('location: ../view/home.php');
 }
 
