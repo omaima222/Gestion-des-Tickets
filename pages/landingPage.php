@@ -1,6 +1,6 @@
 <?php
-    include('../components/head.php');
-    include('../components/navBar.php');
+include('../components/head.php');
+include('../components/navBar.php');
 ?>
 
     <header>
@@ -49,11 +49,11 @@
 
                 <div class="owl-carousel owl-theme">
                     <?php
-                    // $search = $_GET['search'] ?? '';
-                    foreach (get_matchs() as $match) {
+                    $today = date('Y-m-d h:i:s');
+                    foreach (get_matchs("WHERE m.date > '$today'") as $match) {
                         echo "
                                 <div class='item'>
-                                <a href='../pages/reservation-match.php' class='card-btn'>
+                                <a href='../pages/reservation-match.php?matchId=$match[id]' class='card-btn'>
                                     <div class='card'>
                                         <img class='img-fluid' alt='100%x280' src='../assets/images/match/$match[image]'>
                                         <div class='card-body'>
@@ -85,7 +85,7 @@
             <div class="group">
                 <img src="../assets/images/image 5.jpg" alt="group image" style="width: 100%;">
             </div>
-            
+
         </section>
 
 
