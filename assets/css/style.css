@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root{
+:root {
     --color-primary: #fff;
     --color-secondary: #000;
     --dark-blue: #0022BA;
@@ -8,10 +8,10 @@
     --default: #8A1538;
     --light-blue: #7F7DF3;
     --lightest-blue: #DADAFB;
-    --color-grey : #828282;
+    --color-grey: #828282;
 }
 
-body{
+body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--color-primary);
 }
@@ -24,7 +24,7 @@ body{
 
 }
 
-.navbar form  .btn-login{
+.navbar form .btn-login {
     background-color: var(--color-primary);
     font-weight: normal;
     border: 1px solid var(--default);
@@ -35,28 +35,30 @@ body{
     -o-transition: all .3s ease-out;
 }
 
-.login{
+.login {
     text-decoration: none;
-    color: var(--default) ;
-}
-.navbar form  .btn-login:hover > .login{
-    color: var(--color-primary);
-}
-
-.signup{
-    text-decoration: none;
-    color: var(--color-primary);
-}
-.navbar form  .btn-signup:hover > .signup{
     color: var(--default);
 }
 
-.navbar form  .btn-login:hover,
-.navbar form  .btn-login:focus{
+.navbar form .btn-login:hover > .login {
+    color: var(--color-primary);
+}
+
+.signup {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.navbar form .btn-signup:hover > .signup {
+    color: var(--default);
+}
+
+.navbar form .btn-login:hover,
+.navbar form .btn-login:focus {
     background-color: var(--default) !important;
 }
 
-.navbar form  .btn-signup{
+.navbar form .btn-signup {
     background-color: var(--default);
     font-weight: normal;
     transition: all .3s ease-out;
@@ -66,44 +68,44 @@ body{
     -o-transition: all .3s ease-out;
 }
 
-.navbar form  .btn-signup:hover,
-.navbar form  .btn-signup:focus{
+.navbar form .btn-signup:hover,
+.navbar form .btn-signup:focus {
     background-color: var(--color-primary) !important;
     border: 1px solid var(--default) !important;
 }
 
 /* style all navbar button (sign in & sign up) */
-a.btn-navbar__signup{
+a.btn-navbar__signup {
     color: var(--color-primary);
     text-decoration: none;
 }
 
-a.btn-navbar__signup:hover{
+a.btn-navbar__signup:hover {
     color: var(--default);
 }
 
-a.btn-navbar__login{
+a.btn-navbar__login {
     color: var(--default);
     text-decoration: none;
 }
 
-a.btn-navbar__login:hover{
+a.btn-navbar__login:hover {
     color: var(--color-primary);
 }
 
-.navbar .navbar-nav .nav-item a{
+.navbar .navbar-nav .nav-item a {
     transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
     -moz-transition: all .3s ease-out;
     -ms-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
-    padding:  .5rem 1rem;
-    font-weight:700;
+    padding: .5rem 1rem;
+    font-weight: 700;
 }
 
 .navbar .navbar-nav .nav-item a:hover,
 .navbar .navbar-nav .nav-item a:focus,
-.navbar .navbar-nav .nav-item a:active{
+.navbar .navbar-nav .nav-item a:active {
     background-color: var(--default);
     color: var(--color-primary) !important;
     border-radius: .5rem;
@@ -114,39 +116,38 @@ a.btn-navbar__login:hover{
 }
 
 /* style the header */
-header{
+header {
     min-height: 400px;
     width: 100%;
-    background-image:
-    linear-gradient(to bottom, rgba(255, 166, 158, 0.5), rgba(134, 22, 87, 0.5)),
+    background-image: linear-gradient(to bottom, rgba(255, 166, 158, 0.5), rgba(134, 22, 87, 0.5)),
     url("../images/image 4.jpg");
     position: relative;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 7rem;
-   
+
 }
 
-header .header-title{
+header .header-title {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 3rem;
-    
+
 }
 
-header .header-title p{
+header .header-title p {
     font-size: 3rem;
     font-weight: 700;
     line-height: 7rem;
     color: var(--color-primary);
     text-shadow: 4px 4px var(--color-secondary);
-    
+
 
 }
 
-header form.search-form{
+header form.search-form {
     position: absolute;
     left: 15%;
     top: 97%;
@@ -159,11 +160,11 @@ header form.search-form{
     align-items: center;
 }
 
-header form.search-form input{
+header form.search-form input {
     border: none;
 }
 
-header form.search-form .btn-search{
+header form.search-form .btn-search {
     color: var(--color-primary);
     background-color: var(--default);
     border: 1px solid var(--color-primary);
@@ -173,29 +174,30 @@ header form.search-form .btn-search{
 }
 
 /* style upcoming match section ==>> Carousel */
-.upcoming-match{
+.upcoming-match {
     margin-bottom: 1rem;
 }
+
 .upcoming-match .upcoming-title p,
-.browse-teams .teams-title p{
+.browse-teams .teams-title p {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
 .upcoming-match .carousel-inner .carousel-item p,
-.browse-teams .carousel-inner .carousel-item p{
+.browse-teams .carousel-inner .carousel-item p {
     font-size: .8rem;
 }
 
 .upcoming-match .view-all a,
-.browse-teams .view-all a{
+.browse-teams .view-all a {
     text-decoration: none;
     color: var(--default);
 
 }
 
 
-main .carousel-control-next i{
+main .carousel-control-next i {
     color: var(--default);
     position: absolute;
     top: 49%;
@@ -203,49 +205,49 @@ main .carousel-control-next i{
     z-index: 1111;
 }
 
-.carousel-indicators{
+.carousel-indicators {
     margin-bottom: -2rem;
 }
 
-.indicators{
+.indicators {
     background-color: var(--color-secondary) !important;
 }
 
-.browse-teams{
+.browse-teams {
     margin-bottom: 4rem;
 }
 
 /* style the footer */
-footer{
+footer {
     padding: 3rem 0 0;
     background-color: var(--default);
 }
 
-footer .fifa{
+footer .fifa {
     color: var(--color-primary);
     font-size: 1.5rem;
 }
 
-footer  ul{
+footer ul {
     list-style: none;
 }
 
-footer  ul li{
+footer ul li {
     margin-bottom: .7rem;
 }
 
-footer ul li.links-title a{
+footer ul li.links-title a {
     font-size: 1rem;
 }
 
-footer  ul li a{
+footer ul li a {
     text-decoration: none;
     color: var(--color-primary);
     text-transform: capitalize;
     font-size: .7rem;
 }
 
-footer .social-links{
+footer .social-links {
     margin: 3rem 0 0;
     border-top: 1px solid var(--color-primary);
     padding: 2rem;
@@ -253,23 +255,24 @@ footer .social-links{
     color: var(--color-primary);
 }
 
-footer .social-links ul li{
+footer .social-links ul li {
     margin: 0 1rem;
 }
 
+/* User related style start */
 
-.userBody{
-    background-color: var(--default) ;
+.userBody {
+    background-color: var(--default);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.buttonAcc{
-    background-color: var(--default)!important ;
+.buttonAcc {
+    background-color: var(--default) !important;
     color: white;
     width: 100%;
-    border: 1px solid var(--default)!important;
+    border: 1px solid var(--default) !important;
     border-radius: 0.2rem;
     transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
@@ -278,13 +281,13 @@ footer .social-links ul li{
     -o-transition: all .3s ease-out;
 }
 
-.buttonAcc:hover{
-    color: var(--default)!important;
-    background-color: var(--color-primary)!important;
+.buttonAcc:hover {
+    color: var(--default) !important;
+    background-color: var(--color-primary) !important;
 }
 
-.buttonDownload{
-    background-color: var(--default) ;
+.buttonDownload {
+    background-color: var(--default);
     color: white;
     border: 1px solid var(--default);
     border-radius: 1rem;
@@ -294,43 +297,73 @@ footer .social-links ul li{
     -ms-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
 }
-.buttonDownload:hover{
-    color: var(--default)!important;
+
+.buttonDownload:hover {
+    color: var(--default) !important;
     background-color: var(--color-primary);
 }
 
-.reservTable{
-    padding: 1rem!important;
+.reservTable {
+    padding: 1rem !important;
     background-color: var(--color-primary);
     border-radius: 0.5rem;
 
 }
 
+.ticketDetails {
+
+    border-bottom: 0.2rem dashed rgba(0, 0, 0, 0.446);
+
+}
+
+.userLinks {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.userLinks:hover {
+    color: var(--default);
+}
+
+@media only screen and (max-width: 768px) {
+    .profile {
+        display: inline-block !important;
+    }
+
+    .matchTicketDetails {
+        display: inline-block !important;
+    }
+
+}
+
+/* User related style end */
+
 
 /* style button of all clicked cards */
-a.card-btn{
+a.card-btn {
     color: var(--color-secondary);
     text-decoration: none;
 }
 
 /* style reservation page */
-main .information-match{
+main .information-match {
     margin-bottom: 2rem;
     margin-top: 5rem;
 }
-main .information-match .match-info .match-img{
+
+main .information-match .match-info .match-img {
     background-color: var(--lightest-blue);
     /* border: 1px solid red; */
     justify-content: center;
     display: flex;
-    
+
 }
 
 main .information-match .share ul {
     margin-top: 1.5rem;
 }
 
-main .information-match .share ul li{
+main .information-match .share ul li {
     text-decoration: none;
     color: var(--default);
     width: 3rem;
@@ -348,17 +381,17 @@ main .information-match .share ul li{
     -o-border-radius: .3rem;
 }
 
-main .information-match .share ul li a{
+main .information-match .share ul li a {
     color: var(--default);
 }
 
-main .information-match .match-info .description .title{
+main .information-match .match-info .description .title {
     font-size: 1.5rem;
     font-weight: bold;
 
 }
 
-main .information-match .match-info .ticket{
+main .information-match .match-info .ticket {
     border: 1px solid var(--color-grey);
     border-radius: .3rem;
     -webkit-border-radius: .3rem;
@@ -373,7 +406,7 @@ main .information-match .match-info .ticket{
     transition: all .2s ease-in-out;
 }
 
-main .information-match .match-info .ticket  button{
+main .information-match .match-info .ticket button {
     background-color: var(--default);
     color: var(--color-primary);
     border-radius: .2rem;
@@ -382,11 +415,11 @@ main .information-match .match-info .ticket  button{
     -ms-border-radius: .2rem;
     -o-border-radius: .2rem;
     font-size: .8rem;
-    margin:  .5rem auto;
+    margin: .5rem auto;
 }
 
-/* HOVER ALL CARDS*/ 
-main .information-match .match-info .ticket:hover{
+/* HOVER ALL CARDS*/
+main .information-match .match-info .ticket:hover {
     transform: scale(1.05);
     cursor: pointer;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
@@ -396,13 +429,6 @@ main .information-match .match-info .ticket:hover{
     -o-transform: scale(1.05);
 }
 
-.owl-carousel .owl-item img{
+.owl-carousel .owl-item img {
     height: 200px;
-}
-
-
-@media only screen and (max-width: 768px){
-    .profile{
-        display: inline-block !important;
-    }
 }

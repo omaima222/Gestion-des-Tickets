@@ -1,6 +1,6 @@
 <?php
-    include('../components/head.php');
-    include('../components/navBar.php');
+include('../components/head.php');
+include('../components/navBar.php');
 ?>
 
     <header>
@@ -11,12 +11,12 @@
             </p>
         </div>
 
-        <form action="#" class="search-form ">
+        <form action="landingPage.php" method="POST" class="search-form ">
             <div class="container">
                 <div class="row ">
                     <div class="col">
                         <div class="form-group ">
-                            <input type="text" name="search-ticket" class="form-control" id="search"
+                            <input type="text" name="search-match" class="form-control" id="search-input"
                                    placeholder="Search by matchs, teams..." required>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <button class="btn btn-search" type="submit">Search</button>
+                        <button class="btn btn-search" type="submit" name="search" id="search">Search</button>
                     </div>
 
                 </div>
@@ -85,7 +85,7 @@
             <div class="group">
                 <img src="../assets/images/image 5.jpg" alt="group image" style="width: 100%;">
             </div>
-            
+
         </section>
 
 

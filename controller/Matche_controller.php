@@ -12,7 +12,12 @@ if (isset($_POST['specific_match'])) get_specific_match($_POST['specific_match']
 function get_matchs($condition = ''): bool|array
 {
     $match = new Matche();
-    return $match->read($condition);
+    if (isset($_POST['search'])) {
+        $search_match = $_POST['search-match'];
+        return $match->searchMatch($search_match);
+    } else {
+        return $match->read($condition);
+    }
 }
 
 function get_spec_match($id): bool|array

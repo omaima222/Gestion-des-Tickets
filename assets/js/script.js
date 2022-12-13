@@ -113,7 +113,7 @@ function onSubmitReserve() {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, Confirm'
     }).then((result) => {
-        if(result.isConfirmed){
+        if (result.isConfirmed) {
             document.querySelector('#reserve-btn').click();
         }
     });

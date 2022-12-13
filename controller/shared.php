@@ -65,7 +65,7 @@ function upload_image($image, $dir): string
         die();
     }
 
-    if ($image["size"] > 2048576) {
+    if ($image["size"] > 10048576) {
         $_SESSION['message'] = "Sorry, your image is large than 1mb !";
         header("location: $dir.php");
         die();
