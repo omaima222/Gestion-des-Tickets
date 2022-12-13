@@ -26,27 +26,8 @@ function separate_date($date): array
 {
     $toDate = strtotime($date);
     $day = date('d', $toDate);
-    $month = date('m', $toDate);
-    return [$day, toMonthString($month)];
-}
-
-function toMonthString($number): string
-{
-    return match ($number) {
-        "01" => 'JAN',
-        "02" => 'FEB',
-        "03" => 'MAR',
-        "04" => 'APR',
-        "05" => 'MAY',
-        "06" => 'JUN',
-        "07" => 'JUL',
-        "08" => 'AUG',
-        "09" => 'SEP',
-        "10" => 'OCT',
-        "11" => 'NOV',
-        "12" => 'DEC',
-        default => "null",
-    };
+    $month = date('M', $toDate);
+    return [$day, $month];
 }
 
 function upload_image($image, $dir): string

@@ -12,9 +12,16 @@ if (isset($_POST['specific_match'])) get_specific_match($_POST['specific_match']
 function get_matchs($condition = ''): bool|array
 {
     $match = new Matche();
-    if (isset($_POST['search'])) {
+    if (isset($_POST['search']) && ($_POST['search-match'] != '' || $_POST['date'] != '')) {
+        $search_date = "";
+        if ($_POST['date'] != '') {
+            $arr_date = explode(' / ', $_POST['date']);
+            $first_date = $arr_date[0];
+            $second_date = $arr_date[1];
+            $search_date = "AND ( m.date BETWEEN '$first_date' AND '$second_date' )";
+        }
         $search_match = $_POST['search-match'];
-        return $match->searchMatch($search_match);
+        return $match->searchMatch($search_match, $search_date);
     } else {
         return $match->read($condition);
     }

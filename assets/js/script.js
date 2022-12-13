@@ -22,6 +22,23 @@ $(document).ready(function () {
     $('#form').parsley();
 });
 
+$(document).ready(function () {
+    $('#search-date').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear'
+        }
+    });
+
+    $('#search-date').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD') + ' / ' + picker.endDate.format('YYYY-MM-DD'));
+    });
+
+    $('#search-date').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+    });
+});
+
 document.querySelector("#add_match").addEventListener("click", () => {
     document.querySelector("#form").reset();
 
