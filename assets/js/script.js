@@ -70,7 +70,7 @@ function deleteItem(item, id) {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            if (item == 1) {
+            if (item === 1) {
                 $.ajax({
                     type: "POST",
                     url: 'dashboard.php',
@@ -79,7 +79,7 @@ function deleteItem(item, id) {
                         location.reload();
                     }
                 });
-            } else if (item == 2) {
+            } else if (item === 2) {
                 $.ajax({
                     type: "POST",
                     url: 'dashboard.php',
@@ -88,7 +88,7 @@ function deleteItem(item, id) {
                         location.reload();
                     }
                 });
-            } else if (item == 3) {
+            } else if (item === 3) {
                 $.ajax({
                     type: "POST",
                     url: 'dashboard.php',

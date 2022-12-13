@@ -75,7 +75,8 @@ class Matche extends Connection
     }
 
     // search method
-    public function searchMatch($search_match){
+    public function searchMatch($search_match): bool|array
+    {
         try {
             $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description, m.image
                     FROM matchs AS m
