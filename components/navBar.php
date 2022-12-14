@@ -32,7 +32,7 @@
         <div class="mx-3 dropdown">
           <img style="width:3rem; height:3rem;" class="dropdown-toggle rounded-circle" role="button" data-bs-toggle="dropdown" aria-expanded="false" src="../assets/images/users pfp/<?php echo $users['image'];?>" alt="user pfp">
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../pages/profile.php?updateId=<?= $users['id'];?>">Edit profile</a></li>
+            <li><a class="dropdown-item" href="../pages/profile.php?updateId=<?= $users['id'];?>">Profile</a></li>
             <li><button class="dropdown-item" name="logout" type="submit" >Log out</button></li>
             <li><button class="dropdown-item" name="deleteAcc"  type="submit" onclick="return confirm('do you really want to delete your account?')" >Delete account</button></li>
             <?php if( $users['is_admin']==1){  ?>

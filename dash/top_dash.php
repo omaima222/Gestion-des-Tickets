@@ -172,7 +172,7 @@ if($_SESSION["isAdmin"]==0){
                              aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="../pages/profile.php?updateId=<?= $_SESSION['userId'];?>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Edit Profile
+                                Profile
                             </a>
                             <a class="dropdown-item" href="../pages/landingPage.php" >
                                 <i class="fas fa-house fa-sm fa-fw mr-2 text-gray-400"></i>

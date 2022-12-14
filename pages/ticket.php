@@ -5,11 +5,9 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/lib..."></script>
-<script src="https://cdnjs.cloudflare.com/ajax/lib..." ></script> -->
 
 <body class="p-5">
-    <div style=" margin-top: 5rem;" class="m-5" id="Tickeeets">
+    <div style=" margin-top: 5rem;" class="m-5" id="">
         <h1 class="m-4">E-Tickets Details</h1>
         <div class="matchTicketDetails d-flex p-4">
             <?php
@@ -49,32 +47,9 @@
                 <h4 class="fw-bold"><?=$ticket['ticket_price'];?>$</h4>
             </div>
         </div>
-        <button style="width : 100%;" class=" buttonDownload btn p-3" id="saveticket" onclick="generatePDF()" ><i class="bi bi-download"></i> &nbsp Download pdf</button>
+        <button style="width : 100%;" class=" buttonDownload btn p-3" id="saveticket" ><a class="userLinks"  href="../ticket_pdf/generate_pdf.php?TicketId=<?=$ticket['id'];?>"><i class="bi bi-download"></i> &nbsp Download pdf </a></button>
     </div>
-    <!-- <script>
-
-        async function generatePDF() {
-            document.getElementById("saveticket").innerHTML = "Currently downloading, please wait";
-
-            //Downloading
-            var downloading = document.getElementById("Tickeeets");
-            var doc = new jsPDF('l', 'pt');
-
-            await html2canvas(downloading, {
-                allowTaint: true,
-                useCORS: true,
-            }).then((canvas) => {
-                //Canvas (convert to PNG)
-                doc.addImage(canvas.toDataURL("image/png"), 'PNG', 5, 5, 500, 700);
-            })
-
-            doc.save("Document.pdf");
-
-            //End of downloading
-
-            document.getElementById("saveticket").innerHTML = "Click to download";
-        }
-    </script> -->
 
 </body>
+
 
