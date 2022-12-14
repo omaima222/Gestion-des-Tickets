@@ -2,10 +2,6 @@
 
 namespace App\Classes;
 
-use PDO;
-use PDOException;
-
-
 class User extends Connection
 {
     public $id;
@@ -18,7 +14,7 @@ class User extends Connection
     public $is_admin;
 
     //=================================== setters ===================================//
-    
+
     public function setId($id): void
     {
         $this->id = $id;
@@ -31,7 +27,7 @@ class User extends Connection
 
     public function setLastName($last_name): void
     {
-        $this->last_name =  $last_name;
+        $this->last_name = $last_name;
     }
 
     public function setEmail($email): void
@@ -53,7 +49,7 @@ class User extends Connection
     {
         $this->pic = $pic;
     }
-    
+
 
     public function setAdmin($is_admin): void
     {
@@ -63,63 +59,63 @@ class User extends Connection
 
     //=================================== methods ===================================//
 
-    public function signup(){
-    
+    public function signup()
+    {
+
         $stmt = $this->connect()->prepare("INSERT INTO user VALUES ( ?,?,?,?,?,?,? )");
-        $stmt->execute([NULL,$this->first_name,$this->last_name,$this->email,$this->password,0,$this->pic]);
-        move_uploaded_file($this->image, '../assets/images/users pfp/'.$this->pic);
+        $stmt->execute([NULL, $this->first_name, $this->last_name, $this->email, $this->password, 0, $this->pic]);
+        move_uploaded_file($this->image, '../assets/images/users pfp/' . $this->pic);
 
     }
 
-    public function login(){
-    
+    public function login()
+    {
+
         $stmt = $this->connect()->prepare("SELECT * FROM user WHERE email=? AND password=?");
-        $stmt->execute([$this->email,$this->password]);
-        $user = $stmt->fetch();
-
-        return $user;
+        $stmt->execute([$this->email, $this->password]);
+        return $stmt->fetch();
     }
-    
-    public function update($id){
-        
+
+    public function update($id)
+    {
+
         $stmt = $this->connect()->prepare("UPDATE user SET first_name= ? , last_name= ? , email= ? ,
-        password=? ,image=?   WHERE id='$id' ");  
-        $stmt->execute([$this->first_name,$this->last_name,$this->email,$this->password,$this->pic]);      
-        move_uploaded_file($this->image, '../assets/images/users pfp/'.$this->pic);
+        password=? ,image=?   WHERE id='$id' ");
+        $stmt->execute([$this->first_name, $this->last_name, $this->email, $this->password, $this->pic]);
+        move_uploaded_file($this->image, '../assets/images/users pfp/' . $this->pic);
 
     }
-    
-    public function delete($id){
+
+    public function delete($id)
+    {
         $stmt = $this->connect()->prepare("DELETE FROM user WHERE id=?");
         $stmt->execute([$id]);
         unset($_SESSION['userId']);
         unset($_SESSION['isAdmin']);
-    } 
+    }
 
-    public function display( $id ){
-  
+    public function display($id)
+    {
+
         $stmt = $this->connect()->prepare("SELECT * FROM user WHERE id=? ");
         $stmt->execute([$id]);
-        $users = $stmt->fetch();
+        return $stmt->fetch();
 
-        return  $users;
-     
-    } 
+    }
 
-    public function logout(){
+    public function logout()
+    {
         unset($_SESSION['userId']);
         unset($_SESSION['isAdmin']);
-    } 
+    }
 
 
-    public function get_user(){
+    public function get_user(): bool|array
+    {
         $stmt = $this->connect()->prepare("SELECT * FROM user");
         $stmt->execute();
-        $users = $stmt->fetchAll();
-        return  $users; 
-    } 
+        return $stmt->fetchAll();
+    }
 }
 
 
-
-?>

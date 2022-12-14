@@ -6,10 +6,10 @@ use App\Classes\Reservation;
 if (isset($_POST['reserve'])) reserve();
 if (isset($_POST['delete_reservation'])) delete_reservation($_POST['delete_reservation']);
 
-function get_reservations(): bool|array
+function get_reservations($condition = ''): bool|array
 {
     $reservation = new Reservation();
-    return $reservation->read();
+    return $reservation->read($condition);
 }
 
 function reserve(): void
@@ -17,11 +17,11 @@ function reserve(): void
     $spectator_id = validate_input("{$_POST['reservation-spectator']}", 'select');
     $match_id = validate_input("{$_POST["reservation-match"]}", 'select');
     $quantity = validate_input("{$_POST["reservation-quantity"]}", 'select');
-    $date_reservation = $_POST["reservation-date"];
+    $date_reservation = date("Y-m-d H:i:s");
 
     if ($spectator_id == 'null' || $match_id == 'null' || $quantity == 'null' || $date_reservation == 'null') {
         $_SESSION['message'] = "Invalid inputs When Reserve !";
-        header('location: ../pages/dashboard.php');
+        header('location: ../index.php');
         die;
     }
 
@@ -32,11 +32,11 @@ function reserve(): void
     $reservation->setDateReservation($date_reservation);
 
     if ($reservation->reserve()) {
-        $_SESSION['message'] = "Reservation has been added successfully !";
+//        $_SESSION['message'] = "Reservation has been added successfully !";
     } else {
         $_SESSION['message'] = "Error when Reserve !";
     }
-    header('location: ../pages/dashboard.php');
+    header('location: ../index.php');
 }
 
 function delete_reservation($id): void
@@ -48,6 +48,6 @@ function delete_reservation($id): void
     } else {
         $_SESSION['message'] = "Error when delete Reservation !";
     }
-    header('location: ../view/home.php');
+//    header('location: ../view/home.php');
 }
 

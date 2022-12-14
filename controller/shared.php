@@ -26,27 +26,8 @@ function separate_date($date): array
 {
     $toDate = strtotime($date);
     $day = date('d', $toDate);
-    $month = date('m', $toDate);
-    return [$day, toMonthString($month)];
-}
-
-function toMonthString($number): string
-{
-    return match ($number) {
-        "01" => 'JAN',
-        "02" => 'FEB',
-        "03" => 'MAR',
-        "04" => 'APR',
-        "05" => 'MAY',
-        "06" => 'JUN',
-        "07" => 'JUL',
-        "08" => 'AUG',
-        "09" => 'SEP',
-        "10" => 'OCT',
-        "11" => 'NOV',
-        "12" => 'DEC',
-        default => "null",
-    };
+    $month = date('M', $toDate);
+    return [$day, $month];
 }
 
 function upload_image($image, $dir): string
@@ -57,9 +38,9 @@ function upload_image($image, $dir): string
 
     $target_dir = "../assets/images/$dir/";
     $target_file = $target_dir . basename($image["name"]);
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
         $_SESSION['message'] = "Sorry, only JPG, JPEG, PNG files are allowed !";
         header("location: $dir.php");
         die();
@@ -73,15 +54,15 @@ function upload_image($image, $dir): string
 
     // change file name
     $random = rand(0, 100000);
-    $rename = "Image".date('ymd')."$random.$imageFileType";
+    $rename = "Image" . date('ymd') . "$random.$imageFileType";
 
-    if (file_exists($target_dir.$rename)) {
+    if (file_exists($target_dir . $rename)) {
         $_SESSION['message'] = "Sorry, file already exists !";
         header("location: $dir.php");
         die();
     }
 
-    if (move_uploaded_file($image["tmp_name"], $target_dir.$rename)) {
+    if (move_uploaded_file($image["tmp_name"], $target_dir . $rename)) {
         return $rename;
     } else {
         $_SESSION['message'] = "Sorry, there was an error uploading your image.";
@@ -95,5 +76,5 @@ function upload_image($image, $dir): string
 function delete_image($image, $dir): void
 {
     $target_dir = "../assets/images/$dir/";
-    unlink($target_dir.$image);
+    unlink($target_dir . $image);
 }

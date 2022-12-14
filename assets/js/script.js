@@ -22,6 +22,23 @@ $(document).ready(function () {
     $('#form').parsley();
 });
 
+$(document).ready(function () {
+    $('#search-date').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear'
+        }
+    });
+
+    $('#search-date').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD') + ' / ' + picker.endDate.format('YYYY-MM-DD'));
+    });
+
+    $('#search-date').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+    });
+});
+
 document.querySelector("#add_match").addEventListener("click", () => {
     document.querySelector("#form").reset();
 
@@ -59,24 +76,6 @@ function editMatch(id) {
     document.querySelector("#match-update-btn").style.cssText = 'display: block;';
 }
 
-// onsubmit = (event) => {
-//     event.preventDefault();
-
-//  }
-
- $("#search").onsubmit(function(){
-    $.ajax({
-      type:'POST',
-      url:'search.php',
-      data:{
-        name:$("#search-input").val(),
-      },
-      success:function(data){
-        $("#output").html(data);
-      }
-    });
-  });
-
 function deleteItem(item, id) {
     Swal.fire({
         title: 'Are you sure?',
@@ -88,7 +87,7 @@ function deleteItem(item, id) {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            if (item == 1) {
+            if (item === 1) {
                 $.ajax({
                     type: "POST",
                     url: 'dashboard.php',
@@ -97,7 +96,7 @@ function deleteItem(item, id) {
                         location.reload();
                     }
                 });
-            } else if (item == 2) {
+            } else if (item === 2) {
                 $.ajax({
                     type: "POST",
                     url: 'dashboard.php',
@@ -106,7 +105,7 @@ function deleteItem(item, id) {
                         location.reload();
                     }
                 });
-            } else if (item == 3) {
+            } else if (item === 3) {
                 $.ajax({
                     type: "POST",
                     url: 'dashboard.php',
@@ -116,6 +115,23 @@ function deleteItem(item, id) {
                     }
                 });
             }
+        }
+    });
+}
+
+function onSubmitReserve() {
+    let quantity = document.querySelector('#reservation-quantity').value;
+    Swal.fire({
+        title: 'Are you sure?',
+        text: `Confirm Reserve ${quantity} Tickets for this Match`,
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Confirm'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.querySelector('#reserve-btn').click();
         }
     });
 }

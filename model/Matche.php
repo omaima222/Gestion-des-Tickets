@@ -54,14 +54,15 @@ class Matche extends Connection
     }
 
     // methods crud
-    public function read(): bool|array
+    public function read($condition = ''): bool|array
     {
         try {
-            $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description, m.image
+            $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description, m.image, s.capacity
                     FROM matchs AS m
                     INNER JOIN team AS t ON m.team1_id = t.id 
                     INNER JOIN team AS t2 ON m.team2_id = t2.id
-                    INNER JOIN stadium AS s ON m.stadium_id = s.id";
+                    INNER JOIN stadium AS s ON m.stadium_id = s.id
+                    $condition";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->execute();
@@ -74,14 +75,16 @@ class Matche extends Connection
     }
 
     // search method
-    public function searchMatch($search_match){
+    public function searchMatch($search_match, $search_date = ''): bool|array
+    {
         try {
             $sql = "SELECT m.id,t.name AS n_t1, t2.name AS n_t2, m.ticket_price, s.name n_s, m.date, m.description, m.image
                     FROM matchs AS m
                     INNER JOIN team AS t ON m.team1_id = t.id 
                     INNER JOIN team AS t2 ON m.team2_id = t2.id
                     INNER JOIN stadium AS s ON m.stadium_id = s.id
-                    WHERE t.name LIKE ('%$search_match%') OR t2.name LIKE('%$search_match%')";
+                    WHERE ( t.name LIKE ('%$search_match%') OR t2.name LIKE('%$search_match%') OR s.name LIKE ('%$search_match%') )
+                    $search_date";
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->execute();

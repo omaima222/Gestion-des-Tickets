@@ -1,4 +1,5 @@
 <?php
+$today = date("Y-m-d h:i:s");
 include_once 'top_dash.php';
 ?>
 <?php if (isset($_SESSION['message'])): ?>
@@ -29,7 +30,7 @@ include_once 'top_dash.php';
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
                         <th>Image</th>
@@ -57,7 +58,7 @@ include_once 'top_dash.php';
                     foreach (get_matchs() as $match) {
                         echo "
                             <tr>
-                                <td><img class='rounded' src='../assets/images/match/$match[image]' style='height: 30px'></td>
+                                <td><img class='rounded' src='../assets/images/match/$match[image]' style='height: 30px' alt='match image'></td>
                                 <td>$match[n_t1]</td>
                                 <td>$match[n_t2]</td>
                                 <td>$match[ticket_price] $</td>
@@ -98,7 +99,7 @@ include_once 'top_dash.php';
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
-                                    <label class="form-label">Team 1</label>
+                                    <label class="form-label" for="match-first-team">Team 1</label>
                                     <select class="form-control form-select" id="match-first-team"
                                             name="match-first-team">
                                         <?php
@@ -111,7 +112,7 @@ include_once 'top_dash.php';
                             </div>
                             <div class="col">
                                 <div class="mb-3">
-                                    <label class="form-label">Team 2</label>
+                                    <label class="form-label" for="match-second-team">Team 2</label>
                                     <select class="form-control form-select" id="match-second-team"
                                             name="match-second-team">
                                         <?php
@@ -124,7 +125,7 @@ include_once 'top_dash.php';
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Stadium</label>
+                            <label class="form-label" for="match-stadium">Stadium</label>
                             <select class="form-control form-select" id="match-stadium" name="match-stadium">
                                 <?php
                                 foreach (get_stadiums() as $stadium) {
@@ -134,17 +135,17 @@ include_once 'top_dash.php';
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Price</label>
+                            <label class="form-label" for="match-ticket-price">Price</label>
                             <input type="number" class="form-control" name="match-ticket-price" id="match-ticket-price"
                                    data-parsley-trigger="keyup" min="1" step="0.01" required/>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Date</label>
+                            <label class="form-label" for="match-date">Date</label>
                             <input type="datetime-local" class="form-control" name="match-date" id="match-date"
                                    data-parsley-trigger="keyup" required/>
                         </div>
                         <div class="mb-0">
-                            <label class="form-label">Description</label>
+                            <label class="form-label" for="match-description">Description</label>
                             <textarea class="form-control" rows="5" id="match-description" name="match-description"
                                       data-parsley-pattern="[a-zA-Z0-9\s]+"
                                       data-parsley-pattern-message="Description must contain Letters & numbers only."
