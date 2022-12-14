@@ -309,10 +309,8 @@ footer .social-links ul li {
 
 }
 
-.ticketDetails {
-
+.ticketDetails{
     border-bottom: 0.2rem dashed rgba(0, 0, 0, 0.446);
-
 }
 
 .userLinks {
@@ -324,8 +322,32 @@ footer .social-links ul li {
     color: var(--default);
 }
 
-@media only screen and (max-width: 768px) {
-    .profile {
+/* ticket pdf start */
+.details{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: lighter;
+}
+
+.details1{
+    margin-left: 20rem;
+    margin-top: -10rem;
+    float:right;
+}
+.dtl{
+    float:right;
+    margin-top: -2.5rem;
+    font-weight: bold;
+}
+.orderSummery{
+    margin-top: 2.5rem;
+
+}
+/* ticket pdf end */
+
+
+@media only screen and (max-width: 768px){
+    .profile{
         display: inline-block !important;
     }
 
@@ -334,6 +356,7 @@ footer .social-links ul li {
     }
 
 }
+
 
 /* User related style end */
 
