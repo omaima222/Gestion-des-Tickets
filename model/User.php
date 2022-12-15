@@ -15,6 +15,7 @@ class User extends Connection
 
     //=================================== setters ===================================//
 
+    
     public function setId($id): void
     {
         $this->id = $id;
