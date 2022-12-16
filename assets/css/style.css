@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --color-primary: #fff;
+    --color-secondary: #000;
+    --dark-blue: #0022BA;
+    --normal-blue: #231FEA;
+    --default: #8A1538;
+    --light-blue: #7F7DF3;
+    --lightest-blue: #DADAFB;
+    --color-grey: #828282;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-primary);
+}
+
+/* style the navbar */
+.navbar .navbar-brand {
+    font-size: 1.1rem;
+    color: var(--default);
+    font-weight: bold;
+
+}
+
+.navbar form .btn-login {
+    background-color: var(--color-primary);
+    font-weight: normal;
+    border: 1px solid var(--default);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.login {
+    text-decoration: none;
+    color: var(--default);
+}
+
+.navbar form .btn-login:hover > .login {
+    color: var(--color-primary);
+}
+
+.signup {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.navbar form .btn-signup:hover > .signup {
+    color: var(--default);
+}
+
+.navbar form .btn-login:hover,
+.navbar form .btn-login:focus {
+    background-color: var(--default) !important;
+}
+
+.navbar form .btn-signup {
+    background-color: var(--default);
+    font-weight: normal;
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.navbar form .btn-signup:hover,
+.navbar form .btn-signup:focus {
+    background-color: var(--color-primary) !important;
+    border: 1px solid var(--default) !important;
+}
+
+/* style all navbar button (sign in & sign up) */
+a.btn-navbar__signup {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a.btn-navbar__signup:hover {
+    color: var(--default);
+}
+
+a.btn-navbar__login {
+    color: var(--default);
+    text-decoration: none;
+}
+
+a.btn-navbar__login:hover {
+    color: var(--color-primary);
+}
+
+.navbar .navbar-nav .nav-item a {
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    padding: .5rem 1rem;
+    font-weight: 700;
+}
+
+.navbar .navbar-nav .nav-item a:hover,
+.navbar .navbar-nav .nav-item a:focus,
+.navbar .navbar-nav .nav-item a:active {
+    background-color: var(--default);
+    color: var(--color-primary) !important;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+
+/* style the header */
+header {
+    min-height: 400px;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(255, 166, 158, 0.5), rgba(134, 22, 87, 0.5)),
+    url("../images/image 4.jpg");
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 7rem;
+
+}
+
+header .header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+
+}
+
+header .header-title p {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 7rem;
+    color: var(--color-primary);
+    text-shadow: 4px 4px var(--color-secondary);
+
+
+}
+
+header form.search-form {
+    position: absolute;
+    left: 15%;
+    top: 97%;
+    background-color: var(--color-primary);
+    padding: .5rem 1rem;
+    border: 2px solid var(--color-secondary);
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header form.search-form input {
+    border: none;
+}
+
+header form.search-form .btn-search {
+    color: var(--color-primary);
+    background-color: var(--default);
+    border: 1px solid var(--color-primary);
+    font-weight: normal;
+    position: absolute;
+    left: 90%;
+}
+
+/* style upcoming match section ==>> Carousel */
+.upcoming-match {
+    margin-bottom: 1rem;
+}
+
+.upcoming-match .upcoming-title p,
+.browse-teams .teams-title p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.upcoming-match .carousel-inner .carousel-item p,
+.browse-teams .carousel-inner .carousel-item p {
+    font-size: .8rem;
+}
+
+.upcoming-match .view-all a,
+.browse-teams .view-all a {
+    text-decoration: none;
+    color: var(--default);
+
+}
+
+
+main .carousel-control-next i {
+    color: var(--default);
+    position: absolute;
+    top: 49%;
+    left: 81%;
+    z-index: 1111;
+}
+
+.carousel-indicators {
+    margin-bottom: -2rem;
+}
+
+.indicators {
+    background-color: var(--color-secondary) !important;
+}
+
+.browse-teams {
+    margin-bottom: 4rem;
+}
+
+/* style the footer */
+footer {
+    padding: 3rem 0 0;
+    background-color: var(--default);
+}
+
+footer .fifa {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: .7rem;
+}
+
+footer ul li.links-title a {
+    font-size: 1rem;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: var(--color-primary);
+    text-transform: capitalize;
+    font-size: .7rem;
+}
+
+footer .social-links {
+    margin: 3rem 0 0;
+    border-top: 1px solid var(--color-primary);
+    padding: 2rem 2rem 0;
+    color: var(--color-primary);
+}
+
+footer .social-links ul li {
+    margin: 0 1rem;
+}
+
+/* User related style start */
+
+.userBody {
+    background-color: var(--default);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonAcc {
+    background-color: var(--default) !important;
+    color: white;
+    width: 100%;
+    border: 1px solid var(--default) !important;
+    border-radius: 0.2rem;
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.buttonAcc:hover {
+    color: var(--default) !important;
+    background-color: var(--color-primary) !important;
+}
+
+.buttonDownload {
+    background-color: var(--default);
+    color: white;
+    border: 1px solid var(--default);
+    border-radius: 1rem;
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.buttonDownload:hover {
+    color: var(--default) !important;
+    background-color: var(--color-primary);
+}
+
+.reservTable {
+    padding: 1rem !important;
+    background-color: var(--color-primary);
+    border-radius: 0.5rem;
+
+}
+
+.ticketDetails{
+    border-bottom: 0.2rem dashed rgba(0, 0, 0, 0.446);
+}
+
+.userLinks {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.userLinks:hover {
+    color: var(--default);
+}
+
+/* ticket pdf start */
+.details{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: lighter;
+}
+
+.details1{
+    margin-left: 20rem;
+    margin-top: -10rem;
+    float:right;
+}
+.dtl{
+    float:right;
+    margin-top: -2.5rem;
+    font-weight: bold;
+}
+.orderSummery{
+    margin-top: 2.5rem;
+
+}
+/* ticket pdf end */
+
+
+@media only screen and (max-width: 768px){
+    .profile{
+        display: inline-block !important;
+    }
+
+    .matchTicketDetails {
+        display: inline-block !important;
+    }
+
+}
+
+
+/* User related style end */
+
+
+/* style button of all clicked cards */
+a.card-btn {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+/* style reservation page */
+main .information-match {
+    margin-bottom: 2rem;
+    margin-top: 5rem;
+}
+
+main .information-match .match-info .match-img {
+    background-color: var(--lightest-blue);
+    /* border: 1px solid red; */
+    justify-content: center;
+    display: flex;
+
+}
+
+main .information-match .share ul {
+    margin-top: 1.5rem;
+}
+
+main .information-match .share ul li {
+    text-decoration: none;
+    color: var(--default);
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid var(--default);
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .7rem;
+    border-radius: .3rem;
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    -ms-border-radius: .3rem;
+    -o-border-radius: .3rem;
+}
+
+main .information-match .share ul li a {
+    color: var(--default);
+}
+
+main .information-match .match-info .description .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+main .information-match .match-info .ticket {
+    border: 1px solid var(--color-grey);
+    border-radius: .3rem;
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    -ms-border-radius: .3rem;
+    -o-border-radius: .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: .7rem 1.5rem;
+    transition: all .2s ease-in-out;
+}
+
+main .information-match .match-info .ticket button {
+    background-color: var(--default);
+    color: var(--color-primary);
+    border-radius: .2rem;
+    -webkit-border-radius: .2rem;
+    -moz-border-radius: .2rem;
+    -ms-border-radius: .2rem;
+    -o-border-radius: .2rem;
+    font-size: .8rem;
+    margin: .5rem auto;
+}
+
+/* HOVER ALL CARDS*/
+main .information-match .match-info .ticket:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+.owl-carousel .owl-item img {
+    height: 200px;
+}
